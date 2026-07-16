@@ -134,9 +134,9 @@ nav a.nav-cta:hover{background:var(--horizon);color:var(--ink)}
   .hero-copy{padding:0 24px 40px}
   .scroll-hint{display:none}
   nav{padding:16px 24px}
-  /* portrait crop: keep window + sofa in frame */
-  .hero-img{object-position:62% 45%}
-  .hero-img-wrap{transform-origin:60% 36%;transform:scale(1.9)}
+  /* portrait crop (hero-mobile.webp): bridge sits at 50% x, 38% y */
+  .hero-img{object-position:center}
+  .hero-img-wrap{transform-origin:50% 38%;transform:scale(2.2)}
 }
 
 /* ================================================================
@@ -369,10 +369,10 @@ nav a.nav-cta:hover{background:var(--horizon);color:var(--ink)}
 <section class="hero" id="hero">
   <div class="hero-img-wrap" id="heroImgWrap">
     <picture>
-      <source media="(max-width: 900px)" srcset="assets/hero-960.webp" type="image/webp">
-      <source srcset="assets/hero-1920.webp" type="image/webp">
-      <img class="hero-img" src="assets/hero-1920.jpg"
-           width="1920" height="1078"
+      <source media="(max-width: 900px)" srcset="assets/hero-mobile.webp" type="image/webp">
+      <source srcset="assets/hero-2908.webp" type="image/webp">
+      <img class="hero-img" src="assets/hero-2908.jpg"
+           width="2908" height="1632"
            alt="Living room opening onto a view of the sea and Bandra–Worli Sea Link at dusk"
            fetchpriority="high">
     </picture>
@@ -571,9 +571,9 @@ if (!reduceMotion) {
     "(min-width: 901px)": function () {
       buildHero(2.1, "+=150%");
     },
-    // Mobile: shorter scrub
+    // Mobile: starts deeper into the sea view so the pull-back reads clearly
     "(max-width: 900px)": function () {
-      buildHero(1.9, "+=100%");
+      buildHero(2.2, "+=100%");
     }
   });
 
