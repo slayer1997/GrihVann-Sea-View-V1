@@ -7,27 +7,27 @@
 <meta name="description" content="Curated new-launch sea-facing residences in South & Central Mumbai. Verified inventory, direct developer pricing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&family=Archivo+Expanded:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#26282B;
-  --paper:#FAF9F6;
+  --ink:#211E1A;
+  --paper:#FAF7F1;
   --sea-deep:#33404D;
-  --horizon:#D9A66C;
+  --horizon:#BE9E5E;
   --mist:#C9CFD4;
-  --cta:#B97F3F; /* deeper horizon for contrast on light bg */
+  --cta:#9A7B3F;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Archivo',sans-serif;
+  font-family:'EB Garamond',Georgia,serif;
   font-weight:400;
   color:var(--ink);
   background:var(--paper);
   line-height:1.6;
   font-size:17px;
 }
-h1,h2,h3{font-family:'Archivo Expanded',sans-serif;font-weight:600;letter-spacing:-0.02em;line-height:1.15}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:-0.005em;line-height:1.08}
 .mono{
   font-family:'IBM Plex Mono',monospace;
   font-size:13px;
@@ -50,10 +50,20 @@ nav.scrolled{
   color:var(--ink);
   box-shadow:0 1px 0 var(--mist);
 }
-nav .logo{font-family:'Archivo Expanded',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;text-decoration:none;color:inherit}
+nav .logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:20px;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;color:inherit}
 nav .logo span{color:var(--horizon)}
-nav a.navlink{color:inherit;text-decoration:none;font-size:15px;font-weight:500;margin-left:28px;opacity:.85}
+nav a.navlink{
+  color:inherit;text-decoration:none;margin-left:28px;opacity:.85;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+}
 nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
+nav a.nav-cta{
+  margin-left:28px;text-decoration:none;
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  border:1px solid var(--horizon);color:inherit;padding:9px 18px;
+  transition:background .25s ease,color .25s ease;
+}
+nav a.nav-cta:hover{background:var(--horizon);color:var(--ink)}
 
 /* ---------- HERO ---------- */
 .hero{
@@ -70,6 +80,7 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
   transform-origin:56% 34%;
   transform:scale(2.1);
 }
+.hero-img-wrap picture{display:block;width:100%;height:100%}
 .hero-img{
   width:100%;height:100%;
   object-fit:cover;
@@ -88,20 +99,21 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
 }
 .hero-copy .eyebrow{color:var(--horizon);margin-bottom:14px}
 .hero-copy h1{
-  font-size:clamp(38px,5.2vw,72px);
+  font-size:clamp(44px,6.5vw,92px);
   max-width:14ch;
-  font-weight:700;
+  font-weight:500;
 }
-.hero-copy h1 .line-b{display:block;opacity:0;transform:translateY(16px)}
+.hero-copy h1 .line-b{display:block;opacity:0;transform:translateY(16px);font-style:italic;color:#E9DFC9}
 .hero-cta{
-  display:inline-block;margin-top:28px;
-  background:var(--horizon);color:var(--ink);
-  font-weight:500;font-size:16px;
-  padding:14px 32px;border-radius:2px;
+  display:inline-block;margin-top:30px;
+  background:transparent;color:var(--paper);
+  border:1px solid var(--horizon);
+  font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;
+  padding:15px 34px;
   text-decoration:none;
-  transition:background .2s ease;
+  transition:background .25s ease,color .25s ease;
 }
-.hero-cta:hover{background:#E5B87E}
+.hero-cta:hover{background:var(--horizon);color:var(--ink)}
 .scroll-hint{
   position:absolute;right:32px;bottom:56px;z-index:5;
   color:var(--paper);opacity:.7;
@@ -299,6 +311,29 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
   font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,241,0.6)}
 .gv .footer-links a:hover{color:var(--cream)}
 
+/* attention layer */
+.gv .project{cursor:pointer}
+.gv .project .img-slot{transition:transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .5s ease}
+.gv .project:hover .img-slot{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(33,30,26,.35)}
+.gv .project .view-link{
+  font-family:var(--monof);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--brass);margin-top:14px;opacity:0;transform:translateY(4px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.gv .project:hover .view-link{opacity:1;transform:none}
+.gv .table-row{transition:background .25s ease;padding-left:8px;padding-right:8px;margin:0 -8px}
+.gv .table-row:hover{background:var(--linen)}
+.gv .live-dot{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--brass);margin-right:8px;vertical-align:middle;
+  animation:livepulse 2s ease-in-out infinite;
+}
+@keyframes livepulse{0%,100%{opacity:1}50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){
+  .gv .live-dot{animation:none}
+  .gv .project .view-link{opacity:1;transform:none}
+}
+
 /* responsive */
 @media (max-width:900px){
   .gv .projects{grid-template-columns:1fr 1fr}
@@ -322,19 +357,25 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
 <body>
 
 <nav id="nav">
-  <a class="logo" href="#">sea<span>·</span>views</a>
+  <a class="logo" href="#">Grih<span>Vann</span></a>
   <div>
     <a class="navlink" href="#collection">Collection</a>
-    <a class="navlink" href="#enquire">Enquire</a>
+    <a class="navlink" href="#prices">Transparency</a>
+    <a class="nav-cta" href="#enquire">Enquire</a>
   </div>
 </nav>
 
 <!-- HERO: opens cropped into the window's sea view, zooms out to the living room -->
 <section class="hero" id="hero">
   <div class="hero-img-wrap" id="heroImgWrap">
-    <img class="hero-img" src="assets/living-room-sea-link-view.png"
-         alt="Living room opening onto a view of the sea and Bandra–Worli Sea Link at dusk"
-         fetchpriority="high">
+    <picture>
+      <source media="(max-width: 900px)" srcset="assets/hero-960.webp" type="image/webp">
+      <source srcset="assets/hero-1920.webp" type="image/webp">
+      <img class="hero-img" src="assets/hero-1920.jpg"
+           width="1920" height="1078"
+           alt="Living room opening onto a view of the sea and Bandra–Worli Sea Link at dusk"
+           fetchpriority="high">
+    </picture>
   </div>
   <div class="hero-shade"></div>
   <div class="hero-copy">
@@ -368,6 +409,7 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
           <div class="spec-row"><span>FLOORS</span><b>3 – 47</b></div>
           <div class="spec-row"><span>SEA-VIEW ARC</span><b>180°</b></div>
         </div>
+        <div class="view-link">View residence →</div>
       </article>
 
       <article class="project">
@@ -379,6 +421,7 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
           <div class="spec-row"><span>FLOORS</span><b>2 – 32</b></div>
           <div class="spec-row"><span>SEA-VIEW ARC</span><b>210°</b></div>
         </div>
+        <div class="view-link">View residence →</div>
       </article>
 
       <article class="project">
@@ -390,6 +433,7 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
           <div class="spec-row"><span>FLOORS</span><b>4 – 24</b></div>
           <div class="spec-row"><span>SEA-VIEW ARC</span><b>160°</b></div>
         </div>
+        <div class="view-link">View residence →</div>
       </article>
 
     </div>
@@ -435,13 +479,13 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
           <span>Project</span><span>₹ / sq.ft</span><span>Sea-view</span><span>Updated</span>
         </div>
         <div class="table-row">
-          <span>Meridian Worli</span><span class="n">84,500</span><span class="n">98%</span><span class="t">2d ago</span>
+          <span>Meridian Worli</span><span class="n">84,500</span><span class="n">98%</span><span class="t"><span class="live-dot"></span>2d ago</span>
         </div>
         <div class="table-row">
-          <span>Azure Bandstand</span><span class="n">1,12,000</span><span class="n">100%</span><span class="t">5h ago</span>
+          <span>Azure Bandstand</span><span class="n">1,12,000</span><span class="n">100%</span><span class="t"><span class="live-dot"></span>5h ago</span>
         </div>
         <div class="table-row">
-          <span>Tidewater Versova</span><span class="n">61,200</span><span class="n">86%</span><span class="t">1d ago</span>
+          <span>Tidewater Versova</span><span class="n">61,200</span><span class="n">86%</span><span class="t"><span class="live-dot"></span>1d ago</span>
         </div>
       </div>
     </div>
@@ -478,10 +522,10 @@ nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
       <p>A Mumbai firm that treats the sea as an asset — and treats you like you can read a spreadsheet.</p>
     </div>
     <div class="stats">
-      <div class="stat"><div class="big">₹4.2k Cr</div><div class="lbl">TRANSACTED, FEE-TRANSPARENT</div></div>
-      <div class="stat"><div class="big">100%</div><div class="lbl">PRICES PUBLISHED PUBLICLY</div></div>
-      <div class="stat"><div class="big">9 yrs</div><div class="lbl">ON THE COASTLINE</div></div>
-      <div class="stat"><div class="big">0</div><div class="lbl">HIDDEN BROKERAGE FEES</div></div>
+      <div class="stat"><div class="big" data-count="4.2" data-prefix="₹" data-suffix="k Cr" data-decimals="1">₹4.2k Cr</div><div class="lbl">TRANSACTED, FEE-TRANSPARENT</div></div>
+      <div class="stat"><div class="big" data-count="100" data-suffix="%">100%</div><div class="lbl">PRICES PUBLISHED PUBLICLY</div></div>
+      <div class="stat"><div class="big" data-count="9" data-suffix=" yrs">9 yrs</div><div class="lbl">ON THE COASTLINE</div></div>
+      <div class="stat"><div class="big" data-count="0">0</div><div class="lbl">HIDDEN BROKERAGE FEES</div></div>
     </div>
   </section>
 
@@ -552,6 +596,32 @@ if (!reduceMotion) {
   // Reduced motion: second headline line just shows
   document.querySelectorAll(".line-b").forEach(el => {
     el.style.opacity = 1; el.style.transform = "none";
+  });
+}
+
+// Scroll reveals: sections and cards rise gently into view.
+if (!reduceMotion) {
+  gsap.utils.toArray(
+    ".gv .project, .gv .tenet, .gv .market-lead, .gv .table, .gv .coast-grid > *, .gv .quote > *, .gv .about-lead, .gv .stat, .gv .contact > *"
+  ).forEach(el => {
+    gsap.from(el, {
+      opacity: 0, y: 28, duration: 0.9, ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+
+  // Count-up stats when they enter view.
+  document.querySelectorAll(".gv .stat .big[data-count]").forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: target, duration: 1.6, ease: "power1.out",
+      scrollTrigger: { trigger: el, start: "top 90%", once: true },
+      onUpdate: () => { el.textContent = prefix + obj.v.toFixed(decimals) + suffix; }
+    });
   });
 }
 
