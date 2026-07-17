@@ -3,679 +3,815 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sea Views — Curated Sea-Facing Homes in Mumbai</title>
-<meta name="description" content="Curated new-launch sea-facing residences in South & Central Mumbai. Verified inventory, direct developer pricing.">
+<title>Sea Views — Curated Sea-Facing Homes in Mumbai | GrihVann</title>
+<meta name="description" content="Curated new-launch sea-facing residences in South & Central Mumbai. Verified inventory, published pricing, zero hidden brokerage. By GrihVann.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#211E1A;
-  --paper:#FAF7F1;
-  --sea-deep:#33404D;
-  --horizon:#BE9E5E;
-  --mist:#C9CFD4;
-  --cta:#9A7B3F;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'EB Garamond',Georgia,serif;
-  font-weight:400;
-  color:var(--ink);
-  background:var(--paper);
-  line-height:1.6;
-  font-size:17px;
-}
-h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;letter-spacing:-0.005em;line-height:1.08}
-.mono{
-  font-family:'IBM Plex Mono',monospace;
-  font-size:13px;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+/* ============ REGISTERED CUSTOM PROPERTIES (animatable) ============ */
+@property --grad-angle   { syntax: "<angle>";      initial-value: 0deg;  inherits: false; }
+@property --glow         { syntax: "<percentage>"; initial-value: 0%;    inherits: false; }
+@property --card-glint-x { syntax: "<percentage>"; initial-value: 50%;   inherits: false; }
+@property --card-glint-y { syntax: "<percentage>"; initial-value: 50%;   inherits: false; }
+@property --counter-val  { syntax: "<integer>";    initial-value: 0;     inherits: false; }
 
-/* ---------- NAV ---------- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 32px;
-  color:var(--paper);
-  mix-blend-mode:normal;
-  transition:background .3s ease,color .3s ease,box-shadow .3s ease;
-}
-nav.scrolled{
-  background:var(--paper);
-  color:var(--ink);
-  box-shadow:0 1px 0 var(--mist);
-}
-nav .logo{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:20px;letter-spacing:0.28em;text-transform:uppercase;text-decoration:none;color:inherit}
-nav .logo span{color:var(--horizon)}
-nav a.navlink{
-  color:inherit;text-decoration:none;margin-left:28px;opacity:.85;
-  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
-}
-nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--horizon)}
-nav a.nav-cta{
-  margin-left:28px;text-decoration:none;
-  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
-  border:1px solid var(--horizon);color:inherit;padding:9px 18px;
-  transition:background .25s ease,color .25s ease;
-}
-nav a.nav-cta:hover{background:var(--horizon);color:var(--ink)}
-
-/* ---------- HERO ---------- */
-.hero{
-  position:relative;
-  height:100vh;   /* fallback */
-  height:100svh;  /* small viewport height: excludes mobile URL bar */
-  overflow:hidden;
-  background:var(--sea-deep);
-}
-.hero-img-wrap{
-  position:absolute;inset:0;
-  will-change:transform;
-  /* origin sits on the window's sea-link view within the photo */
-  transform-origin:56% 34%;
-  transform:scale(2.1);
-}
-.hero-img-wrap picture{display:block;width:100%;height:100%}
-.hero-img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-.hero-shade{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(20,25,32,.55) 0%,rgba(20,25,32,0) 45%);
-  pointer-events:none;
-}
-.hero-copy{
-  position:absolute;left:0;right:0;bottom:0;z-index:5;
-  padding:0 32px 56px;
-  color:var(--paper);
-}
-.hero-copy .eyebrow{color:var(--horizon);margin-bottom:14px}
-.hero-copy h1{
-  font-size:clamp(44px,6.5vw,92px);
-  max-width:14ch;
-  font-weight:500;
-}
-.hero-copy h1 .line-b{display:block;opacity:0;transform:translateY(16px);font-style:italic;color:#E9DFC9}
-.hero-cta{
-  display:inline-block;margin-top:30px;
-  background:transparent;color:var(--paper);
-  border:1px solid var(--horizon);
-  font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;
-  padding:15px 34px;
-  text-decoration:none;
-  transition:background .25s ease,color .25s ease;
-}
-.hero-cta:hover{background:var(--horizon);color:var(--ink)}
-.scroll-hint{
-  position:absolute;right:32px;bottom:56px;z-index:5;
-  color:var(--paper);opacity:.7;
-  display:flex;align-items:center;gap:10px;
-}
-.scroll-hint .bar{width:1px;height:44px;background:var(--paper);opacity:.6;animation:hint 2s ease-in-out infinite}
-@keyframes hint{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
-
-@media (prefers-reduced-motion:reduce){
-  .hero-img-wrap{transform:none!important}
-  .hero-copy h1 .line-b{opacity:1!important;transform:none!important}
-  .scroll-hint .bar{animation:none}
+/* ============ DESIGN TOKENS ============ */
+:root {
+  --ink:        oklch(13% 0.02 250);      /* near-black indigo */
+  --ink-2:      oklch(17% 0.025 252);
+  --abyss:      oklch(10% 0.015 250);
+  --foam:       oklch(94% 0.008 90);      /* warm off-white */
+  --foam-dim:   oklch(94% 0.008 90 / .55);
+  --gold:       oklch(78% 0.11 85);       /* champagne gold */
+  --gold-deep:  oklch(65% 0.12 75);
+  --sea:        oklch(55% 0.09 220);
+  --hairline:   oklch(94% 0.008 90 / .12);
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans:  "Manrope", -apple-system, sans-serif;
+  --ease-lux:   linear(0, 0.0039 0.62%, 0.0156 1.27%, 0.0625 2.65%, 0.2461 5.68%, 0.5 9.09%, 0.7539 12.5%, 0.9375 15.53%, 0.9844 16.91%, 0.9961 17.56%, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ---------- MOBILE (hero/nav) — unified with .gv breakpoint ---------- */
-@media (max-width:900px){
-  body{font-size:16px}
-  .hero-copy{padding:0 24px 40px}
-  .scroll-hint{display:none}
-  nav{padding:16px 24px}
-  /* portrait crop (hero-mobile.webp): bridge sits at 50% x, 38% y */
-  .hero-img{object-position:center}
-  .hero-img-wrap{transform-origin:50% 38%;transform:scale(2.2)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--foam);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: clip;
+  cursor: none;
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { body { cursor: auto; } }
+
+::selection { background: var(--gold); color: var(--abyss); }
+
+/* ============ SCROLL PROGRESS (scroll-driven animation) ============ */
+.progress {
+  position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 100;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  animation: grow-x linear both;
+  animation-timeline: scroll(root);
+}
+@keyframes grow-x { to { transform: scaleX(1); } }
+
+/* ============ CUSTOM CURSOR ============ */
+.cursor {
+  position: fixed; z-index: 200; pointer-events: none;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold);
+  translate: -50% -50%;
+  transition: width .25s var(--ease-out-expo), height .25s var(--ease-out-expo), opacity .3s;
+  mix-blend-mode: difference;
+}
+.cursor.is-hover { width: 56px; height: 56px; }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor { display: none; } }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 90;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: clamp(1.2rem, 3vw, 2rem) clamp(1.4rem, 5vw, 4rem);
+  animation: nav-solidify linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 480px;
+}
+@keyframes nav-solidify {
+  to { background: oklch(13% 0.02 250 / .72); backdrop-filter: blur(18px); padding-block: 1rem; }
+}
+.brand {
+  font-family: var(--font-serif); font-size: 1.45rem; font-weight: 400;
+  letter-spacing: .06em; color: var(--foam); text-decoration: none;
+}
+.brand em { font-style: italic; color: var(--gold); }
+.nav-links { display: flex; gap: 2.4rem; align-items: center; }
+.nav-links a {
+  color: var(--foam-dim); text-decoration: none; font-size: .8rem;
+  letter-spacing: .18em; text-transform: uppercase;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  border: 1px solid var(--gold); color: var(--gold) !important;
+  padding: .6rem 1.4rem; border-radius: 99px;
+  transition: background .3s, color .3s !important;
+}
+.nav-cta:hover { background: var(--gold); color: var(--abyss) !important; }
+@media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+/* ============ HERO ============ */
+.hero { position: relative; height: 100svh; min-height: 640px; overflow: clip; }
+#sea {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+  animation: sea-sink linear both;
+  animation-timeline: view();
+  animation-range: exit 0% exit 100%;
+}
+@keyframes sea-sink { to { transform: translateY(18%) scale(1.06); filter: brightness(.45); } }
+
+.hero-veil {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 110%, oklch(13% 0.02 250 / .85), transparent 55%),
+    linear-gradient(oklch(13% 0.02 250 / .5), transparent 30%);
+}
+.hero-content {
+  position: absolute; inset: 0; display: grid; place-content: end start;
+  padding: clamp(1.6rem, 6vw, 5rem); padding-bottom: clamp(4rem, 12vh, 8rem);
+}
+.hero-kicker {
+  font-size: .78rem; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-kicker::before { content: ""; width: 48px; height: 1px; background: var(--gold); }
+h1 {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(2.8rem, 9vw, 7.5rem);
+  line-height: 1.02; letter-spacing: -0.015em;
+  text-wrap: balance; max-width: 12ch;
+}
+h1 em { font-style: italic; color: var(--gold); font-weight: 300; }
+.hero-sub {
+  margin-top: 1.6rem; max-width: 44ch; color: var(--foam-dim);
+  font-size: clamp(.95rem, 1.4vw, 1.1rem); text-wrap: pretty;
+}
+.hero-content > * { opacity: 0; animation: rise-in 1.2s var(--ease-out-expo) forwards; }
+.hero-content > *:nth-child(2) { animation-delay: .15s; }
+.hero-content > *:nth-child(3) { animation-delay: .3s; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(2.2rem); } to { opacity: 1; transform: none; } }
+
+.scroll-hint {
+  position: absolute; bottom: 2rem; right: clamp(1.6rem, 5vw, 4rem);
+  font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--foam-dim);
+  writing-mode: vertical-rl; display: flex; align-items: center; gap: .8rem;
+}
+.scroll-hint::after {
+  content: ""; width: 1px; height: 56px;
+  background: linear-gradient(var(--gold), transparent);
+  animation: hint-drip 2.2s var(--ease-lux) infinite;
+}
+@keyframes hint-drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+/* ============ MARQUEE ============ */
+.marquee {
+  border-block: 1px solid var(--hairline);
+  overflow: clip; padding-block: 1.1rem;
+  background: var(--ink-2);
+  display: flex; white-space: nowrap;
+}
+.marquee-track {
+  display: flex; gap: 3rem; padding-right: 3rem;
+  animation: marquee 28s linear infinite;
+  font-family: var(--font-serif); font-style: italic;
+  font-size: 1.05rem; color: var(--foam-dim);
+}
+.marquee-track span::after { content: "✦"; margin-left: 3rem; color: var(--gold); font-style: normal; }
+@keyframes marquee { to { transform: translateX(-100%); } }
+
+/* ============ SECTION SCAFFOLD ============ */
+section { padding: clamp(5rem, 12vw, 10rem) clamp(1.4rem, 6vw, 5rem); position: relative; }
+.section-kicker {
+  font-size: .74rem; letter-spacing: .34em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+}
+h2 {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(2rem, 5vw, 4rem); line-height: 1.08;
+  letter-spacing: -0.01em; text-wrap: balance;
+}
+h2 em { font-style: italic; color: var(--gold); }
+
+/* view()-timeline reveal — pure CSS scroll-driven */
+.reveal {
+  animation: reveal-up 1s var(--ease-out-expo) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+@keyframes reveal-up { from { opacity: 0; transform: translateY(3rem); } }
+@supports not (animation-timeline: view()) {
+  .reveal { animation: none; opacity: 1; }
 }
 
-/* ================================================================
-   GRIHVANN CONTENT SECTIONS (ported from index (5), scoped to .gv
-   so they can't collide with the landing-page styles above)
-   ================================================================ */
-.gv{
-  --ink:#211E1A;        /* charcoal */
-  --cream:#FAF7F1;      /* page white */
-  --sand:#DED8CC;       /* warm beige */
-  --linen:#F1EBDF;      /* light cream panels */
-  --brass:#9A7B3F;      /* deep brass */
-  --gold:#BE9E5E;       /* light gold (on dark) */
-  --muted:#55504A;      /* muted text */
-  --line:rgba(33,30,26,0.12);
-  --serif:'EB Garamond', Georgia, serif;
-  --display:'Cormorant Garamond', Georgia, serif;
-  --monof:'IBM Plex Mono', ui-monospace, monospace;
+/* ============ MANIFESTO — per-word scroll reveal ============ */
+.manifesto { max-width: 1100px; margin-inline: auto; text-align: center; }
+.manifesto p {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(1.7rem, 4.2vw, 3.4rem); line-height: 1.32;
+  text-wrap: balance;
+}
+.manifesto .w {
+  display: inline-block;
+  animation: word-in linear both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 42%;
+}
+@keyframes word-in { from { opacity: .12; filter: blur(3px); } to { opacity: 1; filter: blur(0); } }
+@supports not (animation-timeline: view()) { .manifesto .w { animation: none; } }
+.manifesto .gold { color: var(--gold); font-style: italic; }
 
-  background:var(--cream);
-  color:var(--ink);
-  font-family:var(--serif);
-  font-size:18px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-.gv a{color:inherit;text-decoration:none}
-.gv img{display:block;max-width:100%}
+/* ============ RESIDENCES ============ */
+.residences-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+.residences-head p { max-width: 38ch; color: var(--foam-dim); text-wrap: pretty; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.4rem; }
 
-/* layout helpers */
-.gv .wrap{max-width:1440px;margin:0 auto;padding:0}
-.gv .pad{padding:clamp(48px,7vw,96px) clamp(24px,6vw,72px)}
-.gv .eyebrow{
-  font-family:var(--monof);font-size:12px;letter-spacing:0.24em;
-  text-transform:uppercase;color:var(--brass);
+.card {
+  --grad-angle: 135deg;
+  position: relative; border-radius: 20px; padding: 2.4rem 2rem;
+  background:
+    linear-gradient(var(--ink-2), var(--ink-2)) padding-box,
+    conic-gradient(from var(--grad-angle), oklch(94% .008 90 / .05), var(--gold-deep), oklch(94% .008 90 / .05), oklch(94% .008 90 / .05)) border-box;
+  border: 1px solid transparent;
+  transition: --grad-angle 1.4s var(--ease-out-expo), transform .5s var(--ease-out-expo);
+  transform-style: preserve-3d;
+  overflow: clip;
 }
-.gv .italic-gold{font-style:italic;color:var(--brass)}
+.card:hover { --grad-angle: 495deg; }
+.card::before { /* pointer-tracked sheen */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(420px circle at var(--card-glint-x) var(--card-glint-y), oklch(78% .11 85 / .1), transparent 60%);
+  transition: opacity .4s; opacity: 0;
+}
+.card:hover::before { opacity: 1; }
+.card.is-featured {
+  background:
+    linear-gradient(oklch(19% 0.035 250), oklch(15% 0.03 255)) padding-box,
+    conic-gradient(from var(--grad-angle), var(--gold-deep), var(--gold), var(--gold-deep)) border-box;
+}
+.card-tier { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+.card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 2rem; margin: .8rem 0 .2rem; }
+.card-view { font-style: italic; font-family: var(--font-serif); color: var(--foam-dim); margin-bottom: 1.6rem; }
+.card ul { list-style: none; display: grid; gap: .65rem; margin-bottom: 2rem; }
+.card li { display: flex; gap: .7rem; align-items: baseline; font-size: .92rem; color: var(--foam-dim); }
+.card li::before { content: "—"; color: var(--gold); }
+.card-price { font-family: var(--font-serif); font-size: 1.7rem; color: var(--foam); }
+.card-price small { font-family: var(--font-sans); font-size: .72rem; color: var(--foam-dim); letter-spacing: .1em; display: block; margin-top: .2rem; }
+.card-cta {
+  margin-top: 1.6rem; display: inline-flex; align-items: center; gap: .6rem;
+  color: var(--gold); text-decoration: none; font-size: .8rem;
+  letter-spacing: .2em; text-transform: uppercase;
+}
+.card-cta::after { content: "→"; transition: translate .3s var(--ease-out-expo); }
+.card-cta:hover::after { translate: 6px 0; }
 
-.gv h1,.gv h2,.gv h3,.gv h4{font-family:var(--display);font-weight:500;letter-spacing:-0.005em;line-height:1.06;text-wrap:balance}
-.gv h2{font-size:clamp(34px,5.2vw,52px)}
-.gv h3{font-size:clamp(24px,3.4vw,30px)}
-.gv h4{font-size:clamp(22px,3vw,28px)}
+/* ============ STATS ============ */
+.stats {
+  border-block: 1px solid var(--hairline);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem; text-align: center; background: var(--abyss);
+}
+.stat b {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 4.6rem); color: var(--gold); display: block;
+}
+.stat b sup { font-size: .45em; }
+.stat span { font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: var(--foam-dim); }
 
-/* buttons */
-.gv .btn{
-  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-  font-family:var(--monof);font-size:13px;letter-spacing:0.12em;
-  text-transform:uppercase;border:none;transition:opacity .2s, background .2s, color .2s;
+/* ============ GALLERY — sticky horizontal scroll, CSS-driven ============ */
+.gallery-wrap { height: 340vh; padding: 0; view-timeline: --gallery block; }
+.gallery-sticky {
+  position: sticky; top: 0; height: 100svh; overflow: clip;
+  display: flex; align-items: center;
 }
-.gv .btn-solid{background:var(--ink);color:var(--cream);padding:15px 26px}
-.gv .btn-solid:hover{opacity:.86}
-.gv .btn-underline{color:var(--ink);border-bottom:1px solid var(--brass);padding-bottom:3px}
-.gv .btn-underline:hover{color:var(--brass)}
-
-/* image slots — swap the background-image (or drop an <img>) to go live */
-.gv .img-slot{
-  position:relative;width:100%;overflow:hidden;
-  background:linear-gradient(150deg,#cfc7b6 0%,#b9ac93 55%,#a99a7d 100%);
-  background-size:cover;background-position:center;
+.gallery-track {
+  display: flex; gap: clamp(1rem, 3vw, 2.4rem); padding-inline: clamp(1.4rem, 6vw, 5rem);
+  will-change: transform;
+  animation: track-pan linear both;
+  animation-timeline: --gallery;
+  animation-range: contain 0% contain 100%;
 }
-.gv .img-slot::after{
-  content:attr(data-label);
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:18px;
-  font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
-  color:rgba(33,30,26,0.5);
+@keyframes track-pan { to { transform: translateX(calc(-100% + 100vw - clamp(2.8rem, 12vw, 10rem))); } }
+.panel {
+  position: relative; flex: 0 0 auto;
+  width: clamp(300px, 62vw, 720px); aspect-ratio: 4 / 3;
+  border-radius: 22px; overflow: clip;
+  display: grid; align-content: end; padding: 2rem;
+  border: 1px solid var(--hairline);
 }
-.gv .img-slot[style*="url"]::after{display:none}
-
-/* featured */
-.gv .section-head{
-  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;
-  border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:52px;
+.panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.panel::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, oklch(10% .015 250 / .82), transparent 45%);
 }
-.gv .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,44px)}
-.gv .project .img-slot{height:clamp(300px,32vw,400px);margin-bottom:22px}
-.gv .project .place{font-family:var(--monof);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
-.gv .project h3{margin:0 0 18px}
-.gv .spec{
-  display:flex;flex-direction:column;gap:9px;
-  font-family:var(--monof);font-size:12px;color:var(--muted);
-  border-top:1px solid var(--line);padding-top:16px;
-}
-.gv .spec-row{display:flex;justify-content:space-between}
-.gv .spec-row b{color:var(--ink);font-weight:500}
-
-/* why us */
-.gv .why{background:var(--linen)}
-.gv .why-lead{max-width:560px;margin-bottom:56px}
-.gv .why-lead p{font-family:var(--display);font-weight:500;font-size:clamp(28px,3.6vw,38px);line-height:1.18;color:var(--ink)}
-.gv .tenets{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(32px,3.4vw,48px)}
-.gv .tenet{border-top:1px solid var(--brass);padding-top:22px}
-.gv .tenet .num{font-family:var(--monof);font-size:13px;color:var(--brass);margin-bottom:16px}
-.gv .tenet h4{margin:0 0 12px}
-.gv .tenet p{font-size:17px;line-height:1.6;color:var(--muted)}
-
-/* market data */
-.gv .market{display:grid;grid-template-columns:0.9fr 1.4fr;gap:clamp(32px,4vw,64px);align-items:start}
-.gv .market-lead h2{margin:0 0 20px}
-.gv .market-lead p{font-size:18px;color:var(--muted)}
-.gv .table{border-top:2px solid var(--ink)}
-.gv .table-head,.gv .table-row{
-  display:grid;grid-template-columns:1.4fr 1fr 1fr 0.9fr;gap:14px;align-items:center;
-}
-.gv .table-head{
-  padding:16px 0;border-bottom:1px solid var(--line);
-  font-family:var(--monof);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);
-}
-.gv .table-head span:not(:first-child),
-.gv .table-row span:not(:first-child){text-align:right}
-.gv .table-row{
-  padding:20px 0;border-bottom:1px solid var(--line);
-  font-family:var(--display);font-size:19px;color:var(--ink);
-}
-.gv .table-row .n{font-family:var(--monof);font-size:15px}
-.gv .table-row .t{font-family:var(--monof);font-size:12px;color:var(--muted)}
-
-/* coastline */
-.gv .coast{background:var(--ink);color:var(--cream)}
-.gv .coast-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(32px,4vw,64px);align-items:center}
-.gv .coast .img-slot{height:clamp(320px,42vw,460px)}
-.gv .coast .eyebrow{color:var(--gold)}
-.gv .coast h2{color:var(--cream);margin:0 0 36px}
-.gv .coast-list{display:flex;flex-direction:column}
-.gv .coast-item{
-  display:flex;justify-content:space-between;padding:15px 0;
-  border-top:1px solid rgba(250,247,241,0.16);
-  font-family:var(--monof);font-size:13px;letter-spacing:0.08em;color:var(--cream);
-}
-.gv .coast-item .c{color:var(--gold)}
-
-/* testimonial */
-.gv .quote{padding:clamp(64px,8vw,96px) clamp(24px,6vw,72px);text-align:center}
-.gv .quote .mark{font-family:var(--monof);font-size:38px;color:var(--brass);line-height:1;margin-bottom:16px}
-.gv .quote blockquote{
-  font-family:var(--display);font-weight:500;font-style:italic;
-  font-size:clamp(26px,4vw,40px);line-height:1.24;color:var(--ink);
-  max-width:900px;margin:0 auto;text-wrap:balance;
-}
-.gv .quote .cite{font-family:var(--monof);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:34px}
-
-/* about */
-.gv .about{background:var(--linen);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);align-items:center}
-.gv .about-lead p{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.4vw,34px);line-height:1.2;color:var(--ink)}
-.gv .stats{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3vw,40px)}
-.gv .stat .big{font-family:var(--display);font-size:clamp(40px,5vw,52px);color:var(--brass);line-height:1}
-.gv .stat .lbl{font-family:var(--monof);font-size:12px;letter-spacing:0.1em;color:var(--muted);margin-top:10px}
-
-/* contact */
-.gv .contact{padding:clamp(72px,9vw,104px) clamp(24px,6vw,72px);text-align:center}
-.gv .contact h2{font-size:clamp(38px,6vw,60px);margin:0 0 40px}
-.gv .enquiry{display:flex;max-width:520px;margin:0 auto;border-bottom:1px solid var(--ink)}
-.gv .enquiry input{
-  flex:1;border:none;background:transparent;outline:none;
-  font-family:var(--serif);font-size:18px;color:var(--ink);padding:14px 4px;
-}
-.gv .enquiry input::placeholder{color:var(--muted)}
-.gv .enquiry button{white-space:nowrap}
-.gv .form-note{font-family:var(--monof);font-size:11px;letter-spacing:0.08em;color:var(--muted);margin-top:18px;min-height:16px}
-
-/* footer */
-.gv .site-footer{background:var(--ink);color:var(--cream)}
-.gv .footer-inner{
-  max-width:1440px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
-  padding:clamp(40px,5vw,56px) clamp(24px,6vw,72px);
-}
-.gv .footer-brand .name{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:0.3em;color:var(--cream)}
-.gv .footer-brand .domain{font-family:var(--monof);font-size:10px;letter-spacing:0.28em;color:var(--gold)}
-.gv .footer-links{display:flex;gap:36px;flex-wrap:wrap;
-  font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,241,0.6)}
-.gv .footer-links a:hover{color:var(--cream)}
-
-/* attention layer */
-.gv .project{cursor:pointer}
-.gv .project .img-slot{transition:transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .5s ease}
-.gv .project:hover .img-slot{transform:translateY(-6px);box-shadow:0 24px 48px -24px rgba(33,30,26,.35)}
-.gv .project .view-link{
-  font-family:var(--monof);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--brass);margin-top:14px;opacity:0;transform:translateY(4px);
-  transition:opacity .3s ease,transform .3s ease;
-}
-.gv .project:hover .view-link{opacity:1;transform:none}
-.gv .table-row{transition:background .25s ease;padding-left:8px;padding-right:8px;margin:0 -8px}
-.gv .table-row:hover{background:var(--linen)}
-.gv .live-dot{
-  display:inline-block;width:6px;height:6px;border-radius:50%;
-  background:var(--brass);margin-right:8px;vertical-align:middle;
-  animation:livepulse 2s ease-in-out infinite;
-}
-@keyframes livepulse{0%,100%{opacity:1}50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){
-  .gv .live-dot{animation:none}
-  .gv .project .view-link{opacity:1;transform:none}
+.panel figcaption { position: relative; z-index: 1; }
+.panel figcaption b { font-family: var(--font-serif); font-weight: 400; font-size: 1.5rem; display: block; }
+.panel figcaption span { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--foam-dim); }
+@supports not (animation-timeline: view()) {
+  .gallery-wrap { height: auto; }
+  .gallery-sticky { position: static; height: auto; }
+  .gallery-track { overflow-x: auto; animation: none; }
 }
 
-/* responsive */
-@media (max-width:900px){
-  .gv .projects{grid-template-columns:1fr 1fr}
-  .gv .tenets{grid-template-columns:1fr;gap:36px}
-  .gv .market{grid-template-columns:1fr}
-  .gv .coast-grid{grid-template-columns:1fr}
-  .gv .about{grid-template-columns:1fr}
+/* ============ QUOTE ============ */
+.quote { text-align: center; max-width: 950px; margin-inline: auto; }
+.quote blockquote {
+  font-family: var(--font-serif); font-weight: 300; font-style: italic;
+  font-size: clamp(1.5rem, 3.6vw, 2.6rem); line-height: 1.3; text-wrap: balance;
 }
-@media (max-width:560px){
-  .gv .projects{grid-template-columns:1fr}
-  .gv .stats{grid-template-columns:1fr 1fr}
-  .gv .table-head,.gv .table-row{grid-template-columns:1.6fr 1fr 0.8fr}
-  .gv .table-head span:nth-child(3),.gv .table-row span:nth-child(3){display:none} /* hide sea-view % on narrow */
-  .gv .footer-inner{flex-direction:column;align-items:flex-start}
-  .gv .enquiry{flex-direction:column;gap:16px;border-bottom:none}
-  .gv .enquiry input{border-bottom:1px solid var(--ink)}
-  .gv .enquiry button{justify-content:center}
+.quote blockquote em { color: var(--gold); }
+.quote cite {
+  display: block; margin-top: 2rem; font-style: normal;
+  font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: var(--foam-dim);
+}
+
+/* ============ DUSK / LOCATION ============ */
+.dusk { background: linear-gradient(oklch(13% .02 250), oklch(16% .04 285), oklch(13% .02 250)); }
+.dusk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(2rem, 6vw, 6rem); align-items: center; max-width: 1300px; margin-inline: auto; }
+.loc-list { list-style: none; margin-top: 2.4rem; display: grid; }
+.loc-list li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 2rem;
+  padding-block: 1.1rem; border-bottom: 1px solid var(--hairline);
+  font-size: .95rem;
+}
+.loc-list li:first-child { border-top: 1px solid var(--hairline); }
+.loc-list b { font-weight: 500; color: var(--foam); }
+.loc-list span { color: var(--foam-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.compass { width: 100%; max-width: 460px; margin-inline: auto; display: block; }
+.compass .ring { animation: spin 60s linear infinite; transform-origin: center; }
+@keyframes spin { to { rotate: 360deg; } }
+
+/* ============ CTA / FORM ============ */
+.cta { text-align: center; }
+.cta-panel {
+  max-width: 640px; margin: 3rem auto 0;
+  background: oklch(17% .025 252 / .6); backdrop-filter: blur(20px);
+  border: 1px solid var(--hairline); border-radius: 24px;
+  padding: clamp(1.8rem, 5vw, 3rem); text-align: left;
+}
+.field { display: grid; gap: .45rem; margin-bottom: 1.4rem; }
+.field label { font-size: .74rem; letter-spacing: .24em; text-transform: uppercase; color: var(--foam-dim); }
+.field input, .field textarea {
+  background: transparent; border: 0; border-bottom: 1px solid var(--hairline);
+  color: var(--foam); font: inherit; padding: .6rem 0; outline: none;
+  transition: border-color .3s;
+}
+.field textarea { field-sizing: content; min-height: 2.6rem; resize: none; }
+.field :is(input, textarea):focus { border-color: var(--gold); }
+.btn-gold {
+  --glow: 0%;
+  width: 100%; padding: 1.1rem; border-radius: 99px; border: 0;
+  font: 500 .84rem var(--font-sans); letter-spacing: .26em; text-transform: uppercase;
+  color: var(--abyss); cursor: none;
+  background: radial-gradient(120% 200% at 50% calc(100% + var(--glow)), oklch(88% .12 90), var(--gold) 55%, var(--gold-deep));
+  transition: --glow .6s var(--ease-out-expo), transform .3s var(--ease-out-expo);
+}
+.btn-gold:hover { --glow: 90%; transform: translateY(-2px); }
+@media (pointer: coarse) { .btn-gold { cursor: pointer; } }
+
+/* ============ FOOTER ============ */
+footer {
+  border-top: 1px solid var(--hairline);
+  padding: 3rem clamp(1.4rem, 6vw, 5rem);
+  display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  color: var(--foam-dim); font-size: .82rem;
+}
+footer .brand { font-size: 1.2rem; }
+footer a { color: inherit; text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+/* grain overlay */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 99; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; }
 }
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <a class="logo" href="#">Grih<span>Vann</span></a>
-  <div>
-    <a class="navlink" href="#collection">Collection</a>
-    <a class="navlink" href="#prices">Transparency</a>
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<nav>
+  <a class="brand" href="#top">Grih<em>Vann</em></a>
+  <div class="nav-links">
+    <a href="#collection">Collection</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Coastline</a>
     <a class="nav-cta" href="#enquire">Enquire</a>
   </div>
 </nav>
 
-<!-- HERO: opens cropped into the window's sea view, zooms out to the living room -->
-<section class="hero" id="hero">
-  <div class="hero-img-wrap" id="heroImgWrap">
-    <picture>
-      <source media="(max-width: 900px)" srcset="assets/hero-mobile.webp" type="image/webp">
-      <source srcset="assets/hero-2908.webp" type="image/webp">
-      <img class="hero-img" src="assets/hero-2908.jpg"
-           width="2908" height="1632"
-           alt="Living room opening onto a view of the sea and Bandra–Worli Sea Link at dusk"
-           fetchpriority="high">
-    </picture>
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <canvas id="sea" aria-label="Live rendering of the Arabian Sea at dusk"></canvas>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="hero-kicker">South &amp; Central Mumbai · New Launches</p>
+    <h1>The horizon, from your <em>living room</em></h1>
+    <p class="hero-sub">Curated new-launch sea-facing residences across Mumbai's coastline. The water you are watching is rendered live — the views we sell are real, and verified.</p>
   </div>
-  <div class="hero-shade"></div>
-  <div class="hero-copy">
-    <div class="mono eyebrow">South &amp; Central Mumbai · New Launches</div>
-    <h1>
-      <span class="line-a">The horizon,</span>
-      <span class="line-b">from your living room.</span>
-    </h1>
-    <a class="hero-cta" href="#collection">Explore sea-facing homes</a>
+  <span class="scroll-hint">Scroll</span>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Every price published</span><span>Zero hidden brokerage</span><span>Obstruction reports before you ask</span><span>Marine Drive to Madh Island</span>
   </div>
-  <div class="scroll-hint"><span class="mono">Scroll</span><span class="bar"></span></div>
-</section>
-
-<div class="gv">
-<main>
-
-  <!-- ============ FEATURED ============ -->
-  <section class="pad wrap" id="collection">
-    <div class="section-head">
-      <h2>Featured residences</h2>
-      <span class="eyebrow">09 live projects</span>
-    </div>
-    <div class="projects">
-
-      <a class="project" href="projects/three-icc.html" style="display:block;">
-        <article>
-          <div class="img-slot" style="background-image:url('assets/three-icc/towers-dusk.webp');"></div>
-          <div class="place">Island City Center, Dadar · New Launch</div>
-          <h3>Three ICC</h3>
-          <div class="spec">
-            <div class="spec-row"><span>TOWERS</span><b>A · B · C</b></div>
-            <div class="spec-row"><span>FLOORS</span><b>46 – 67</b></div>
-            <div class="spec-row"><span>CONFIGURATIONS</span><b>3 – 5 BHK</b></div>
-          </div>
-          <div class="view-link">View residence →</div>
-        </article>
-      </a>
-
-      <a class="project" href="projects/moraj-shivaji-park.html" style="display:block;">
-        <article>
-          <div class="img-slot" style="background-image:url('assets/moraj-shivaji-park/living-sea-view.webp');"></div>
-          <div class="place">Shivaji Park, Dadar West · New Launch</div>
-          <h3>Moraj Shivaji Park</h3>
-          <div class="spec">
-            <div class="spec-row"><span>3 BHK FROM</span><b>₹ 5.19 Cr</b></div>
-            <div class="spec-row"><span>FLOORS</span><b>G + 41</b></div>
-            <div class="spec-row"><span>RESIDENCES / FLOOR</span><b>2</b></div>
-          </div>
-          <div class="view-link">View residence →</div>
-        </article>
-      </a>
-
-      <article class="project">
-        <div class="img-slot" data-label="Meridian Worli — facade"></div>
-        <div class="place">Worli Sea Face</div>
-        <h3>Meridian Worli</h3>
-        <div class="spec">
-          <div class="spec-row"><span>PRICE / SQ.FT</span><b>₹ 84,500</b></div>
-          <div class="spec-row"><span>FLOORS</span><b>3 – 47</b></div>
-          <div class="spec-row"><span>SEA-VIEW ARC</span><b>180°</b></div>
-        </div>
-        <div class="view-link">View residence →</div>
-      </article>
-
-      <article class="project">
-        <div class="img-slot" data-label="Azure Bandstand — facade"></div>
-        <div class="place">Bandra Bandstand</div>
-        <h3>Azure Bandstand</h3>
-        <div class="spec">
-          <div class="spec-row"><span>PRICE / SQ.FT</span><b>₹ 1,12,000</b></div>
-          <div class="spec-row"><span>FLOORS</span><b>2 – 32</b></div>
-          <div class="spec-row"><span>SEA-VIEW ARC</span><b>210°</b></div>
-        </div>
-        <div class="view-link">View residence →</div>
-      </article>
-
-      <article class="project">
-        <div class="img-slot" data-label="Tidewater Versova — facade"></div>
-        <div class="place">Versova</div>
-        <h3>Tidewater Versova</h3>
-        <div class="spec">
-          <div class="spec-row"><span>PRICE / SQ.FT</span><b>₹ 61,200</b></div>
-          <div class="spec-row"><span>FLOORS</span><b>4 – 24</b></div>
-          <div class="spec-row"><span>SEA-VIEW ARC</span><b>160°</b></div>
-        </div>
-        <div class="view-link">View residence →</div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ WHY US ============ -->
-  <section class="why pad" id="approach">
-    <div class="wrap">
-      <div class="why-lead">
-        <div class="eyebrow" style="margin-bottom:22px;">Why GrihVann</div>
-        <p>Luxury you can verify. We built the firm around three commitments — and we publish against them.</p>
-      </div>
-      <div class="tenets">
-        <div class="tenet">
-          <div class="num">01</div>
-          <h4>Honesty</h4>
-          <p>No staged sightlines. If a view is partially obstructed, we say so — with the floor and the angle.</p>
-        </div>
-        <div class="tenet">
-          <div class="num">02</div>
-          <h4>Transparency</h4>
-          <p>Every rate card, carpet area and charge is listed on the page. No "price on request", ever.</p>
-        </div>
-        <div class="tenet">
-          <div class="num">03</div>
-          <h4>Data-first</h4>
-          <p>Sun path, tide lines, price history and absorption — the numbers that back a ₹-crore decision.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MARKET DATA ============ -->
-  <section class="pad wrap" id="prices">
-    <div class="market">
-      <div class="market-lead">
-        <div class="eyebrow" style="margin-bottom:22px;">Pricing transparency</div>
-        <h2>Every price,<br>in the open.</h2>
-        <p>Live rate cards, updated the moment a developer revises them. No brokers between you and the number.</p>
-      </div>
-      <div class="table">
-        <div class="table-head">
-          <span>Project</span><span>₹ / sq.ft</span><span>Sea-view</span><span>Updated</span>
-        </div>
-        <div class="table-row">
-          <span>Meridian Worli</span><span class="n">84,500</span><span class="n">98%</span><span class="t"><span class="live-dot"></span>2d ago</span>
-        </div>
-        <div class="table-row">
-          <span>Azure Bandstand</span><span class="n">1,12,000</span><span class="n">100%</span><span class="t"><span class="live-dot"></span>5h ago</span>
-        </div>
-        <div class="table-row">
-          <span>Tidewater Versova</span><span class="n">61,200</span><span class="n">86%</span><span class="t"><span class="live-dot"></span>1d ago</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ COASTLINE ============ -->
-  <section class="coast pad">
-    <div class="wrap coast-grid">
-      <div class="img-slot" data-label="Map — Mumbai coastline, Marine Drive to Madh"></div>
-      <div>
-        <div class="eyebrow" style="margin-bottom:22px;">The coastline</div>
-        <h2>From Marine Drive<br>to Madh Island.</h2>
-        <div class="coast-list">
-          <div class="coast-item"><span>MARINE DRIVE</span><span class="c">02</span></div>
-          <div class="coast-item"><span>WORLI SEA FACE</span><span class="c">03</span></div>
-          <div class="coast-item"><span>BANDRA BANDSTAND</span><span class="c">02</span></div>
-          <div class="coast-item"><span>VERSOVA &amp; MADH</span><span class="c">02</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TESTIMONIAL ============ -->
-  <section class="quote wrap">
-    <div class="mark">“</div>
-    <blockquote>They handed me the price history and the obstruction report before I even asked. I bought the sea, and I trusted the number.</blockquote>
-    <div class="cite">Aditi Rao · Meridian Worli, 38th floor</div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="about pad" id="about">
-    <div class="about-lead">
-      <div class="eyebrow" style="margin-bottom:22px;">About GrihVann</div>
-      <p>A Mumbai firm that treats the sea as an asset — and treats you like you can read a spreadsheet.</p>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="big" data-count="4.2" data-prefix="₹" data-suffix="k Cr" data-decimals="1">₹4.2k Cr</div><div class="lbl">TRANSACTED, FEE-TRANSPARENT</div></div>
-      <div class="stat"><div class="big" data-count="100" data-suffix="%">100%</div><div class="lbl">PRICES PUBLISHED PUBLICLY</div></div>
-      <div class="stat"><div class="big" data-count="9" data-suffix=" yrs">9 yrs</div><div class="lbl">ON THE COASTLINE</div></div>
-      <div class="stat"><div class="big" data-count="0">0</div><div class="lbl">HIDDEN BROKERAGE FEES</div></div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="contact wrap" id="enquire">
-    <div class="eyebrow" style="margin-bottom:26px;">Enquire</div>
-    <h2>Book a private viewing<br>of the horizon.</h2>
-    <form class="enquiry" id="enquiryForm" novalidate>
-      <input type="email" id="email" placeholder="your@email.com" aria-label="Email address" required>
-      <button type="submit" class="btn btn-solid">Request viewing →</button>
-    </form>
-    <div class="form-note" id="formNote"></div>
-  </section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="name">GRIHVANN</div>
-      <div class="domain">SEA-VIEWS.COM</div>
-    </div>
-    <div class="footer-links">
-      <a href="#collection">Collection</a>
-      <a href="#prices">Transparency</a>
-      <a href="tel:+912260000000">+91 22 6000 0000</a>
-    </div>
+  <div class="marquee-track">
+    <span>Every price published</span><span>Zero hidden brokerage</span><span>Obstruction reports before you ask</span><span>Marine Drive to Madh Island</span>
   </div>
-</footer>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- ================= MANIFESTO ================= -->
+<section class="manifesto">
+  <p id="manifesto-copy">Most brokers stage the sightline. We publish the obstruction report. Every rate card, carpet area and charge — in the open, before you ask. <span class="gold">Luxury you can verify.</span></p>
+</section>
+
+<!-- ================= RESIDENCES ================= -->
+<span id="prices"></span>
+<section id="collection">
+  <div class="residences-head">
+    <div>
+      <p class="section-kicker reveal">The Collection</p>
+      <h2 class="reveal">Homes that <em>face the water</em></h2>
+    </div>
+    <p class="reveal">Every project we list is sea-facing and verified in person — floor by floor, view by view. If a sightline is obstructed, we tell you the floor and the angle.</p>
+  </div>
+  <div class="cards">
+    <article class="card is-featured reveal">
+      <p class="card-tier">New Launch · Shivaji Park, Dadar West</p>
+      <h3>Moraj Shivaji Park</h3>
+      <p class="card-view">Sea-view 3 BHK · two residences per floor</p>
+      <ul>
+        <li>1,077 &amp; 1,442 sq ft carpet, all sea-facing</li>
+        <li>Private deck &amp; 300+ sq ft lift lobby per home</li>
+        <li>12 ft ceilings · infinity pool · sky lounge</li>
+      </ul>
+      <p class="card-price">₹ 5.19 Cr <small>onwards · published rate card</small></p>
+      <a class="card-cta" href="projects/moraj-shivaji-park.html">View residence</a>
+    </article>
+    <article class="card reveal">
+      <p class="card-tier">New Launch · Island City Center, Dadar</p>
+      <h3>Three ICC</h3>
+      <p class="card-view">3 – 5 BHK · three towers by Bombay Realty</p>
+      <ul>
+        <li>1,283 – 2,994 sq ft carpet, 46 – 67 floors</li>
+        <li>Eastern Seaboard &amp; West Coast views</li>
+        <li>Wadia Group legacy · MahaRERA registered</li>
+      </ul>
+      <p class="card-price">Rate card on enquiry <small>published the day we receive it</small></p>
+      <a class="card-cta" href="projects/three-icc.html">View residence</a>
+    </article>
+    <article class="card reveal">
+      <p class="card-tier">Worli Sea Face</p>
+      <h3>Meridian Worli</h3>
+      <p class="card-view">180° sea-view arc · floors 3 – 47</p>
+      <ul>
+        <li>₹ 84,500 per sq ft, updated live</li>
+        <li>98% of units with unobstructed water</li>
+        <li>Obstruction report available per floor</li>
+      </ul>
+      <p class="card-price">₹ 84,500 <small>per sq ft · published</small></p>
+      <a class="card-cta" href="#enquire">Request the view report</a>
+    </article>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" id="stats">
+  <div class="stat reveal"><b><sup>₹</sup><span data-count="4200">0</span><sup> Cr</sup></b><span>Transacted, fee-transparent</span></div>
+  <div class="stat reveal"><b><span data-count="100">0</span><sup>%</sup></b><span>Prices published publicly</span></div>
+  <div class="stat reveal"><b><span data-count="9">0</span></b><span>Years on the coastline</span></div>
+  <div class="stat reveal"><b><span data-count="0">0</span></b><span>Hidden brokerage fees</span></div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<div class="gallery-wrap" id="gallery">
+  <div class="gallery-sticky">
+    <div class="gallery-track">
+
+      <figure class="panel">
+        <img src="assets/hero-1920.webp" alt="Living room opening onto the sea and Bandra–Worli Sea Link at dusk" loading="lazy">
+        <figcaption><b>The horizon, from a living room</b><span>Sea Link view · dusk</span></figcaption>
+      </figure>
+
+      <figure class="panel">
+        <img src="assets/moraj-shivaji-park/living-sea-view.webp" alt="Actual residence at Moraj Shivaji Park with wraparound sea view" loading="lazy">
+        <figcaption><b>Moraj Shivaji Park</b><span>Actual residence · not a render</span></figcaption>
+      </figure>
+
+      <figure class="panel">
+        <img src="assets/three-icc/towers-dusk.webp" alt="Three ICC towers at Island City Center, Dadar" loading="lazy">
+        <figcaption><b>Three ICC</b><span>Island City Center · Dadar</span></figcaption>
+      </figure>
+
+      <figure class="panel">
+        <img src="assets/moraj-shivaji-park/deck-sea-link.webp" alt="The Sea Link seen from a private deck at Moraj Shivaji Park" loading="lazy">
+        <figcaption><b>The Sea Link, from a private deck</b><span>Photographed on site</span></figcaption>
+      </figure>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= QUOTE ================= -->
+<section class="quote">
+  <blockquote class="reveal">“They handed me the price history and the obstruction report before I even asked. I bought the sea, <em>and I trusted the number.</em>”</blockquote>
+  <cite class="reveal">Aditi Rao · Meridian Worli · 38th floor</cite>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section class="dusk" id="location">
+  <div class="dusk-grid">
+    <div>
+      <p class="section-kicker reveal">The Coastline</p>
+      <h2 class="reveal">From Marine Drive, <em>to Madh Island</em></h2>
+      <ul class="loc-list reveal">
+        <li><b>Marine Drive</b><span>02 live projects</span></li>
+        <li><b>Worli Sea Face</b><span>03 live projects</span></li>
+        <li><b>Bandra Bandstand</b><span>02 live projects</span></li>
+        <li><b>Versova &amp; Madh</b><span>02 live projects</span></li>
+        <li><b>The sea, from your bed</b><span>0 min</span></li>
+      </ul>
+    </div>
+    <svg class="compass reveal" viewBox="0 0 400 400" aria-hidden="true">
+      <g class="ring" stroke="#c9a05a" fill="none" opacity=".55">
+        <circle cx="200" cy="200" r="188" stroke-width="1"/>
+        <circle cx="200" cy="200" r="150" stroke-width=".5" stroke-dasharray="2 6"/>
+        <path d="M200 12 v20 M200 368 v20 M12 200 h20 M368 200 h20" stroke-width="1.5"/>
+      </g>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#c9a05a" stroke-width="1" opacity=".8"/>
+      <path d="M200 120 L216 200 L200 280 L184 200 Z" fill="#c9a05a"/>
+      <text x="200" y="86" text-anchor="middle" fill="#e8dcc3" font-size="15" letter-spacing="4" font-family="Georgia">SEA · W</text>
+      <text x="200" y="330" text-anchor="middle" fill="#8d99a8" font-size="12" letter-spacing="3" font-family="Georgia">19.02° N · 72.81° E</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="enquire">
+  <p class="section-kicker reveal">Private Viewings · By appointment</p>
+  <h2 class="reveal">Book a private viewing<br><em>of the horizon.</em></h2>
+  <form class="cta-panel reveal" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'text-align:center;font-family:var(--font-serif);font-size:1.4rem\'>Thank you — we will be in touch within one business day.</p>'">
+    <div class="field"><label for="f-name">Name</label><input id="f-name" required autocomplete="name"></div>
+    <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" required autocomplete="email"></div>
+    <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="f-msg">Which residence calls to you?</label><textarea id="f-msg" placeholder="Moraj Shivaji Park · Three ICC · Meridian Worli"></textarea></div>
+    <button class="btn-gold" type="submit">Arrange my viewing</button>
+  </form>
+</section>
+
+<footer>
+  <a class="brand" href="#top">Grih<em>Vann</em></a>
+  <span><a href="#collection">Collection</a> · <a href="#gallery">Gallery</a> · <a href="tel:+912260000000">+91 22 6000 0000</a></span>
+  <span>© 2026 GrihVann · sea-views.com · An independent advisory. Project RERA details on respective project pages.</span>
+</footer>
+
 <script>
-gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.config({ ignoreMobileResize: true }); // URL-bar show/hide won't trigger jumpy refreshes
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ==================================================================
+   WEBGL OCEAN — live raymarched sea at dusk, fragment-shader only
+   ================================================================== */
+(() => {
+  const canvas = document.getElementById('sea');
+  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'high-performance' });
+  if (!gl) { canvas.style.background = 'linear-gradient(#1a2b45,#0a1524)'; return; }
 
-if (!reduceMotion) {
-  ScrollTrigger.matchMedia({
-    // Desktop: longer scrub
-    "(min-width: 901px)": function () {
-      buildHero(2.1, "+=150%");
-    },
-    // Mobile: starts deeper into the sea view so the pull-back reads clearly
-    "(max-width: 900px)": function () {
-      buildHero(2.2, "+=100%");
+  const vs = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
+  const fs = `
+precision highp float;
+uniform vec2  u_res;
+uniform float u_time;
+uniform vec2  u_mouse;   // -1..1 parallax
+uniform float u_scroll;  // 0..1 hero exit
+
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }
+float noise(vec2 p){
+  vec2 i = floor(p), f = fract(p);
+  f = f*f*(3.0-2.0*f);
+  return mix(mix(hash(i), hash(i+vec2(1.,0.)), f.x),
+             mix(hash(i+vec2(0.,1.)), hash(i+vec2(1.,1.)), f.x), f.y);
+}
+float fbm(vec2 p){
+  float a = 0.5, r = 0.0;
+  mat2 m = mat2(1.6,1.2,-1.2,1.6);
+  for(int i=0;i<5;i++){ r += a*noise(p); p = m*p + u_time*0.02; a *= 0.5; }
+  return r;
+}
+float seaH(vec2 p){
+  float t = u_time;
+  float h = 0.0;
+  h += 0.34 * fbm(p*0.55 + vec2(t*0.28, t*0.11));
+  h += 0.10 * fbm(p*2.10 + vec2(-t*0.55, t*0.34));
+  h += 0.03 * noise(p*7.0 + vec2(t*1.4, -t*0.9));
+  return h;
+}
+vec3 seaNormal(vec2 p, float eps){
+  float h  = seaH(p);
+  float hx = seaH(p + vec2(eps, 0.));
+  float hz = seaH(p + vec2(0., eps));
+  return normalize(vec3(h-hx, eps*2.2, h-hz));
+}
+vec3 skyColor(vec3 rd, vec3 sunDir){
+  float horizon = pow(1.0 - clamp(rd.y, 0.0, 1.0), 3.0);
+  vec3 zenith  = vec3(0.045, 0.07, 0.14);
+  vec3 dusk    = vec3(0.38, 0.22, 0.16);
+  vec3 sky = mix(zenith, dusk, horizon*0.9);
+  float sunAmt = clamp(dot(rd, sunDir), 0.0, 1.0);
+  sky += vec3(1.0, 0.68, 0.32) * pow(sunAmt, 220.0) * 2.2;   // disc
+  sky += vec3(0.95, 0.60, 0.25) * pow(sunAmt, 14.0) * 0.55;  // glow
+  sky += vec3(0.85, 0.45, 0.20) * pow(sunAmt, 3.5) * 0.22 * horizon; // haze
+  // stars
+  float st = pow(noise(rd.xy*180.0 + 40.0), 22.0) * smoothstep(0.12, 0.5, rd.y);
+  sky += vec3(st)*0.6;
+  return sky;
+}
+void main(){
+  vec2 uv = (gl_FragCoord.xy*2.0 - u_res) / u_res.y;
+  float t = u_time;
+
+  // camera
+  vec3 ro = vec3(0.0, 1.7 + sin(t*0.5)*0.03 + u_scroll*3.0, t*0.6);
+  float yaw   = u_mouse.x*0.08;
+  float pitch = -0.06 + u_mouse.y*0.04 - u_scroll*0.25;
+  vec3 fwd = normalize(vec3(sin(yaw), pitch, cos(yaw)));
+  vec3 rgt = normalize(cross(fwd, vec3(0.,1.,0.)));
+  vec3 up  = cross(rgt, fwd);
+  vec3 rd  = normalize(fwd + uv.x*rgt*0.9 + uv.y*up*0.9);
+
+  vec3 sunDir = normalize(vec3(0.18, 0.055, 1.0));
+  vec3 col;
+
+  if(rd.y > 0.0){
+    col = skyColor(rd, sunDir);
+  } else {
+    // ray-plane to sea, refine with heightfield
+    float dist = -ro.y / rd.y;
+    vec3 p = ro + rd*dist;
+    for(int i=0;i<4;i++){
+      float h = seaH(p.xz)*0.9;
+      dist = (h - ro.y) / rd.y;
+      p = ro + rd*dist;
     }
-  });
+    float fog = exp(-max(dist-2.0, 0.0)*0.028);
+    vec3 n = seaNormal(p.xz, mix(0.06, 0.55, 1.0-fog));
 
-  function buildHero(startScale, scrubDist) {
-    gsap.set("#heroImgWrap", { scale: startScale });
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: scrubDist,
-        scrub: 0.5,
-        pin: true,
-        anticipatePin: 1
-      }
-    });
-    tl.to("#heroImgWrap", { scale: 1, ease: "none" }, 0)
-      .to(".line-b", { opacity: 1, y: 0, ease: "none", duration: 0.3 }, 0.55);
+    vec3 deep    = vec3(0.015, 0.055, 0.09);
+    vec3 shallow = vec3(0.04, 0.13, 0.16);
+    float f = pow(1.0 - max(dot(-rd, n), 0.0), 5.0);      // fresnel
+    f = mix(0.06, 1.0, f);
+
+    vec3 refl = skyColor(reflect(rd, n), sunDir);
+    vec3 water = mix(deep, shallow, smoothstep(0.0, 0.6, seaH(p.xz)));
+    col = mix(water, refl, f);
+
+    // sun glitter path
+    vec3 hlf = normalize(sunDir - rd);
+    float spec = pow(max(dot(n, hlf), 0.0), 240.0);
+    float sparkle = smoothstep(0.55, 1.0, noise(p.xz*14.0 + t*2.0));
+    col += vec3(1.0, 0.72, 0.38) * spec * (2.4 + sparkle*6.0);
+
+    // foam crests
+    float crest = smoothstep(0.62, 0.78, seaH(p.xz)) * smoothstep(0.0, 0.35, fog);
+    col += vec3(0.35, 0.42, 0.46) * crest * 0.25;
+
+    // aerial perspective
+    vec3 horizonCol = skyColor(vec3(rd.x, 0.0, rd.z), sunDir);
+    col = mix(horizonCol, col, fog);
   }
-} else {
-  // Reduced motion: second headline line just shows
-  document.querySelectorAll(".line-b").forEach(el => {
-    el.style.opacity = 1; el.style.transform = "none";
-  });
-}
 
-// Scroll reveals: sections and cards rise gently into view.
-if (!reduceMotion) {
-  gsap.utils.toArray(
-    ".gv .project, .gv .tenet, .gv .market-lead, .gv .table, .gv .coast-grid > *, .gv .quote > *, .gv .about-lead, .gv .stat, .gv .contact > *"
-  ).forEach(el => {
-    gsap.from(el, {
-      opacity: 0, y: 28, duration: 0.9, ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+  // moon-gold vignette + filmic-ish tonemap
+  col = col / (col + 0.55);
+  col = pow(col, vec3(0.92));
+  float vig = 1.0 - 0.35*dot(uv*0.55, uv*0.55);
+  col *= vig;
+
+  gl_FragColor = vec4(col, 1.0);
+}`;
+
+  function compile(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src); gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  const uRes = gl.getUniformLocation(prog, 'u_res');
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+  const uScroll = gl.getUniformLocation(prog, 'u_scroll');
+
+  const SCALE = Math.min(window.devicePixelRatio, 1.6) * 0.72; // perf: sub-native res
+  function resize() {
+    canvas.width = Math.round(canvas.clientWidth * SCALE);
+    canvas.height = Math.round(canvas.clientHeight * SCALE);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  resize();
+  addEventListener('resize', resize);
+
+  let mx = 0, my = 0, tmx = 0, tmy = 0;
+  addEventListener('pointermove', e => {
+    tmx = (e.clientX / innerWidth) * 2 - 1;
+    tmy = (e.clientY / innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let visible = true;
+  new IntersectionObserver(([e]) => visible = e.isIntersecting).observe(canvas);
+
+  const t0 = performance.now();
+  (function frame(now) {
+    requestAnimationFrame(frame);
+    if (!visible) return;
+    mx += (tmx - mx) * 0.04; my += (tmy - my) * 0.04;
+    const sc = Math.min(scrollY / innerHeight, 1);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, reduced ? 12 : (now - t0) / 1000);
+    gl.uniform2f(uMouse, mx, my);
+    gl.uniform1f(uScroll, sc * 0.6);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  })(t0);
+})();
+
+/* ============ custom cursor ============ */
+(() => {
+  const c = document.querySelector('.cursor');
+  if (!c || matchMedia('(pointer: coarse)').matches) return;
+  addEventListener('pointermove', e => {
+    c.style.left = e.clientX + 'px';
+    c.style.top = e.clientY + 'px';
+  }, { passive: true });
+  document.querySelectorAll('a, button, input, textarea, .card').forEach(el => {
+    el.addEventListener('pointerenter', () => c.classList.add('is-hover'));
+    el.addEventListener('pointerleave', () => c.classList.remove('is-hover'));
+  });
+})();
+
+/* ============ manifesto: wrap words for scroll-driven reveal ============ */
+(() => {
+  const p = document.getElementById('manifesto-copy');
+  const wrap = node => {
+    node.childNodes.forEach(ch => {
+      if (ch.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        ch.textContent.split(/(\s+)/).forEach(tok => {
+          if (/^\s+$/.test(tok) || tok === '') frag.append(tok);
+          else { const s = document.createElement('span'); s.className = 'w'; s.textContent = tok; frag.append(s); }
+        });
+        ch.replaceWith(frag);
+      } else if (ch.nodeType === 1) wrap(ch);
     });
+  };
+  wrap(p);
+})();
+
+/* ============ card pointer sheen + tilt ============ */
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    card.style.setProperty('--card-glint-x', x * 100 + '%');
+    card.style.setProperty('--card-glint-y', y * 100 + '%');
+    card.style.transform = `perspective(900px) rotateY(${(x - .5) * 5}deg) rotateX(${(.5 - y) * 5}deg)`;
   });
-
-  // Count-up stats when they enter view.
-  document.querySelectorAll(".gv .stat .big[data-count]").forEach(el => {
-    const target = parseFloat(el.dataset.count);
-    const prefix = el.dataset.prefix || "";
-    const suffix = el.dataset.suffix || "";
-    const decimals = parseInt(el.dataset.decimals || "0", 10);
-    const obj = { v: 0 };
-    gsap.to(obj, {
-      v: target, duration: 1.6, ease: "power1.out",
-      scrollTrigger: { trigger: el, start: "top 90%", once: true },
-      onUpdate: () => { el.textContent = prefix + obj.v.toFixed(decimals) + suffix; }
-    });
-  });
-}
-
-// Nav switches to light once past hero.
-// Hero exits at 2.5x viewport on desktop (pin +=150%) but only 2.0x on mobile (+=100%),
-// so the flip threshold must follow the breakpoint or the nav goes invisible over cream.
-const nav = document.getElementById("nav");
-const mobileMQ = window.matchMedia("(max-width: 900px)");
-window.addEventListener("scroll", () => {
-  const t = reduceMotion ? 0.8 : (mobileMQ.matches ? 1.8 : 2.2);
-  nav.classList.toggle("scrolled", window.scrollY > window.innerHeight * t);
-}, { passive: true });
-
-// Enquiry form — front-end validation only.
-// To capture leads, POST `email` to a Google Apps Script / n8n webhook endpoint below.
-const form = document.getElementById('enquiryForm');
-const note = document.getElementById('formNote');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = document.getElementById('email').value.trim();
-  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!valid) { note.textContent = 'Please enter a valid email address.'; return; }
-  // TODO: replace with your endpoint, e.g. fetch(ENDPOINT, {method:'POST', body: JSON.stringify({email})})
-  note.textContent = 'Thank you — we will be in touch within one business day.';
-  form.reset();
+  card.addEventListener('pointerleave', () => card.style.transform = '');
 });
+
+/* ============ animated counters ============ */
+(() => {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      const el = en.target, target = +el.dataset.count, dur = 1600, t0 = performance.now();
+      (function tick(now) {
+        const k = Math.min((now - t0) / dur, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - k, 4))).toLocaleString('en-IN');
+        if (k < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
+})();
+
+/* ============ JS fallback for browsers without scroll-driven animations ============ */
+if (!CSS.supports('animation-timeline: view()')) {
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.style.transition = 'opacity 1s, transform 1s'; en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(3rem)'; io.observe(el); });
+}
 </script>
 </body>
 </html>
