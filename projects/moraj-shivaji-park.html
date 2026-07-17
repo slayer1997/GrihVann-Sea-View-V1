@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moraj Shivaji Park, Dadar West — Sea Views by GrihVann</title>
+<meta name="description" content="Moraj Codename Shivaji Park — boutique G+41 sea-view tower at Dadar West. 3 BHK residences from ₹5.19 Cr, two homes per floor, private lift lobbies, 12-ft ceilings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#211E1A;
+  --cream:#FAF7F1;
+  --sand:#DED8CC;
+  --linen:#F1EBDF;
+  --brass:#9A7B3F;
+  --gold:#BE9E5E;
+  --muted:#55504A;
+  --line:rgba(33,30,26,0.12);
+  --serif:'EB Garamond', Georgia, serif;
+  --display:'Cormorant Garamond', Georgia, serif;
+  --monof:'IBM Plex Mono', ui-monospace, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);color:var(--ink);
+  font-family:var(--serif);font-size:18px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-0.005em;line-height:1.06;text-wrap:balance}
+h2{font-size:clamp(34px,5.2vw,52px)}
+h3{font-size:clamp(24px,3.4vw,30px)}
+.wrap{max-width:1440px;margin:0 auto}
+.pad{padding:clamp(48px,7vw,96px) clamp(24px,6vw,72px)}
+.eyebrow{font-family:var(--monof);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--brass)}
+.italic-gold{font-style:italic;color:var(--brass)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  font-family:var(--monof);font-size:13px;letter-spacing:0.12em;
+  text-transform:uppercase;border:none;transition:opacity .2s, background .2s, color .2s;
+}
+.btn-solid{background:var(--ink);color:var(--cream);padding:15px 26px}
+.btn-solid:hover{opacity:.86}
+
+/* nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 32px;color:var(--cream);
+  transition:background .3s ease,color .3s ease,box-shadow .3s ease;
+}
+nav.scrolled{background:var(--cream);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+nav .logo{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.28em;text-transform:uppercase}
+nav .logo span{color:var(--gold)}
+nav a.navlink{
+  margin-left:28px;opacity:.85;
+  font-family:var(--monof);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+}
+nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--gold)}
+nav a.nav-cta{
+  margin-left:28px;
+  font-family:var(--monof);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  border:1px solid var(--gold);padding:9px 18px;
+  transition:background .25s ease,color .25s ease;
+}
+nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
+
+/* hero */
+.hero{position:relative;height:88vh;height:88svh;min-height:520px;overflow:hidden;background:#1a1712}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,17,12,.62) 0%,rgba(20,17,12,.05) 55%)}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(24px,6vw,72px) 56px;color:var(--cream)}
+.hero-copy .eyebrow{color:var(--gold);margin-bottom:14px}
+.hero-copy h1{font-size:clamp(40px,6vw,84px);max-width:18ch;color:var(--cream)}
+.hero-copy .sub{font-size:clamp(18px,2vw,22px);margin-top:16px;color:rgba(250,247,241,.85);font-style:italic}
+
+/* fact strip */
+.facts{background:var(--ink);color:var(--cream);display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:clamp(32px,4vw,48px) clamp(24px,6vw,72px)}
+.fact .big{font-family:var(--display);font-size:clamp(30px,3.6vw,42px);color:var(--gold);line-height:1.1}
+.fact .lbl{font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,241,.65);margin-top:8px}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,4vw,64px);align-items:center}
+.intro-lead p{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.4vw,36px);line-height:1.2}
+.intro-body p{color:var(--muted);margin-bottom:18px}
+.imgbox{overflow:hidden}
+.imgbox img{transition:transform .6s ease}
+.imgbox:hover img{transform:scale(1.03)}
+
+/* pricing */
+.pricing{background:var(--linen)}
+.config{display:grid;grid-template-columns:0.9fr 1.4fr;gap:clamp(32px,4vw,64px);align-items:start}
+.table{border-top:2px solid var(--ink)}
+.table-head,.table-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-items:center}
+.table-head{
+  padding:16px 0;border-bottom:1px solid var(--line);
+  font-family:var(--monof);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass);
+}
+.table-head span:not(:first-child),.table-row span:not(:first-child){text-align:right}
+.table-row{padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:20px}
+.table-row .n{font-family:var(--monof);font-size:15px}
+
+/* residences */
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,3vw,44px);margin-top:52px}
+.res-card .imgbox{height:clamp(260px,28vw,360px)}
+.res-card .imgbox img{width:100%;height:100%;object-fit:cover}
+.res-card h4{margin:20px 0 10px;font-size:clamp(20px,2.4vw,24px)}
+.res-card p{color:var(--muted);font-size:16px}
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  border-bottom:1px solid var(--line);padding-bottom:26px;
+}
+
+/* highlights */
+.amen{background:var(--ink);color:var(--cream)}
+.amen .eyebrow{color:var(--gold)}
+.amen h2{color:var(--cream)}
+.amen-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);margin-top:48px}
+.amen h4{color:var(--gold);font-size:20px;margin-bottom:16px}
+.amen-list{list-style:none}
+.amen-list li{
+  padding:11px 0;border-top:1px solid rgba(250,247,241,.14);
+  font-family:var(--monof);font-size:13px;letter-spacing:0.06em;color:rgba(250,247,241,.85);
+}
+
+/* location */
+.loc-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(32px,4vw,64px);align-items:center}
+.loc-list{list-style:none;margin-top:28px}
+.loc-list li{padding:13px 0;border-top:1px solid var(--line);color:var(--muted);font-size:17px;display:flex;justify-content:space-between;gap:16px}
+.loc-list li b{color:var(--ink);font-weight:500}
+.loc-list li .t{font-family:var(--monof);font-size:13px;color:var(--brass);white-space:nowrap}
+
+/* tower/developer */
+.tower{background:var(--linen)}
+.tower-grid{display:grid;grid-template-columns:0.8fr 1.4fr;gap:clamp(32px,4vw,64px);align-items:center}
+.tower .imgbox{max-height:640px}
+.tower .imgbox img{width:100%;object-fit:cover}
+.tower p{color:var(--muted);margin-bottom:16px}
+
+/* cta */
+.cta{text-align:center;padding:clamp(72px,9vw,104px) clamp(24px,6vw,72px)}
+.cta h2{font-size:clamp(38px,6vw,60px);margin:0 0 36px}
+
+/* footer */
+.site-footer{background:var(--ink);color:var(--cream)}
+.footer-inner{
+  max-width:1440px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  padding:clamp(40px,5vw,56px) clamp(24px,6vw,72px);
+}
+.footer-brand .name{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:0.3em}
+.footer-brand .domain{font-family:var(--monof);font-size:10px;letter-spacing:0.28em;color:var(--gold)}
+.footer-links{display:flex;gap:36px;flex-wrap:wrap;font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,241,0.6)}
+.footer-links a:hover{color:var(--cream)}
+.rera{
+  max-width:1440px;margin:0 auto;
+  padding:0 clamp(24px,6vw,72px) clamp(32px,4vw,44px);
+  font-family:var(--monof);font-size:10px;line-height:1.7;color:rgba(250,247,241,.45);
+}
+
+@media (prefers-reduced-motion:reduce){.imgbox img{transition:none}}
+
+/* responsive */
+@media (max-width:900px){
+  .facts{grid-template-columns:1fr 1fr}
+  .intro,.loc-grid,.config,.amen-cols,.tower-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:1fr}
+  nav{padding:16px 24px}
+  nav a.navlink{display:none}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .tower .imgbox{max-width:420px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="../index.html">Grih<span>Vann</span></a>
+  <div>
+    <a class="navlink" href="../index.html#collection">Collection</a>
+    <a class="navlink" href="../index.html#prices">Transparency</a>
+    <a class="nav-cta" href="../index.html#enquire">Enquire</a>
+  </div>
+</nav>
+
+<!-- HERO: real photo from the actual tower -->
+<header class="hero">
+  <img src="../assets/moraj-shivaji-park/living-sea-view.webp" alt="Actual living room at Moraj Shivaji Park with wraparound windows and Arabian Sea view" fetchpriority="high" width="2200" height="1653">
+  <div class="hero-shade"></div>
+  <div class="hero-copy">
+    <div class="eyebrow">Shivaji Park · Dadar West · Sea-View 3 BHK</div>
+    <h1>Moraj Shivaji Park</h1>
+    <div class="sub">Photographed from the actual residence — not a render.</div>
+  </div>
+</header>
+
+<!-- FACT STRIP -->
+<section class="facts">
+  <div class="fact"><div class="big">G+41</div><div class="lbl">One of Shivaji Park's tallest</div></div>
+  <div class="fact"><div class="big">2 / floor</div><div class="lbl">Residences per level</div></div>
+  <div class="fact"><div class="big">12 ft</div><div class="lbl">Floor-to-ceiling height</div></div>
+  <div class="fact"><div class="big">₹5.19 Cr+</div><div class="lbl">3 BHK, published price</div></div>
+</section>
+
+<!-- INTRO -->
+<section class="intro pad wrap">
+  <div>
+    <div class="eyebrow" style="margin-bottom:22px;">Boutique luxury at the park</div>
+    <div class="intro-lead"><p>Two homes per floor. A private lift lobby. The Arabian Sea in every frame — <span class="italic-gold">at Mumbai's cultural heart.</span></p></div>
+  </div>
+  <div class="intro-body">
+    <p>Moraj Codename Shivaji Park is a landmark G+41 tower by the Moraj Group, 400 metres from the park that shaped Mumbai's identity. Every residence is a sea-view 3 BHK with a private deck, a 300+ sq.ft private lift lobby, and a triple-height entrance lobby below.</p>
+    <p>The market has already spoken: 750+ walk-ins and half the inventory sold within seven days of launch. One out of two homes sold in Shivaji Park in that window was here.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing pad">
+  <div class="wrap config">
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;">Pricing transparency</div>
+      <h2>The rate card,<br>in the open.</h2>
+      <p style="color:var(--muted);margin-top:20px;">Launch pricing as shared by the developer. No "price on request" — that's the GrihVann standard.</p>
+    </div>
+    <div class="table">
+      <div class="table-head"><span>Type</span><span>Carpet area</span><span>Starting price</span></div>
+      <div class="table-row"><span>3 BHK</span><span class="n">1,077 sq.ft.</span><span class="n">₹ 5.19 Cr+</span></div>
+      <div class="table-row"><span>3 BHK</span><span class="n">1,442 sq.ft.</span><span class="n">₹ 7.79 Cr+</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESIDENCES: real photos -->
+<section class="pad wrap">
+  <div class="section-head">
+    <h2>Inside the residences</h2>
+    <span class="eyebrow">Actual site photographs</span>
+  </div>
+  <div class="res-grid">
+    <div class="res-card">
+      <div class="imgbox"><img src="../assets/moraj-shivaji-park/deck-sea-link.webp" alt="View from the private deck — Arabian Sea and Bandra–Worli Sea Link" loading="lazy"></div>
+      <h4>A private deck with every home</h4>
+      <p>Uninterrupted Arabian Sea views, with the Bandra–Worli Sea Link on the horizon. Photographed from the deck itself.</p>
+    </div>
+    <div class="res-card">
+      <div class="imgbox"><img src="../assets/moraj-shivaji-park/bathroom.webp" alt="Marble-clad bathroom with Kohler fittings" loading="lazy"></div>
+      <h4>Finishes you can inspect</h4>
+      <p>Full-height marble, Kohler fittings, rain showers. These are handover-standard photographs from the tower, not showflat styling.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="amen pad">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:22px;">Key highlights</div>
+    <h2>Crafted for the few.</h2>
+    <div class="amen-cols">
+      <div>
+        <h4>The residences</h4>
+        <ul class="amen-list">
+          <li>All sea-view 3 BHK homes</li>
+          <li>Only 2 residences per floor</li>
+          <li>300+ sq.ft private lift lobby on every level</li>
+          <li>Private deck with every home</li>
+          <li>12-ft floor-to-ceiling heights</li>
+          <li>Optic fiber-ready, EV charging, solar power</li>
+        </ul>
+      </div>
+      <div>
+        <h4>The tower</h4>
+        <ul class="amen-list">
+          <li>Triple-height entrance lobby</li>
+          <li>Infinity pool with sea view</li>
+          <li>Rooftop sky lounge &amp; observatory deck</li>
+          <li>Terrace sky-bar</li>
+          <li>German mechanical parking</li>
+          <li>5 high-speed elevators · 1:9 amenity-to-residence ratio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="pad wrap">
+  <div class="loc-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;">Location</div>
+      <h2>400 metres from<br>the park itself.</h2>
+      <ul class="loc-list" style="margin-top:36px;">
+        <li><span><b>Shivaji Park</b></span><span class="t">400 m</span></li>
+        <li><span><b>Dadar Chowpatty</b></span><span class="t">500 m</span></li>
+        <li><span><b>Bombay Scottish School</b> · Hinduja Hospital</span><span class="t">1 km</span></li>
+        <li><span><b>Siddhivinayak Temple</b></span><span class="t">2.1 km</span></li>
+        <li><span><b>Lower Parel · Bandra</b></span><span class="t">10 min</span></li>
+        <li><span><b>BKC</b></span><span class="t">14 min</span></li>
+        <li><span><b>Airport</b></span><span class="t">15 min</span></li>
+      </ul>
+    </div>
+    <div class="imgbox"><img src="../assets/moraj-shivaji-park/skyline-sea-link.webp" alt="View across Dadar West towards the Arabian Sea and Sea Link" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- DEVELOPER -->
+<section class="tower pad">
+  <div class="wrap tower-grid">
+    <div class="imgbox"><img src="../assets/moraj-shivaji-park/tower-render.webp" alt="Render of the Moraj Shivaji Park tower at dusk" loading="lazy"></div>
+    <div>
+      <div class="eyebrow" style="margin-bottom:22px;">The developer</div>
+      <h2>Built on trust.<br>Defined by legacy.</h2>
+      <p style="margin-top:24px;">For over three decades, the Moraj Group has crafted landmark developments across Mumbai and Navi Mumbai — they are among the creators of the Navi Mumbai skyline.</p>
+      <p>Architecture is by Hiten Sethi &amp; Associates (HSA), one of Mumbai's most celebrated firms, whose landmarks include Seawoods Grand Central and Palm Beach Galleria.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="eyebrow" style="margin-bottom:26px;">Enquire</div>
+  <h2>See it from the deck.<br>Then decide.</h2>
+  <a class="btn btn-solid" href="../index.html#enquire">Request a site visit →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="name">GRIHVANN</div>
+      <div class="domain">SEA-VIEWS.COM</div>
+    </div>
+    <div class="footer-links">
+      <a href="../index.html#collection">Collection</a>
+      <a href="../index.html#prices">Transparency</a>
+      <a href="tel:+912260000000">+91 22 6000 0000</a>
+    </div>
+  </div>
+  <div class="rera">
+    Moraj Codename Shivaji Park is a project by the Moraj Group at Dadar West, Mumbai. Project details, configurations, pricing and amenities are sourced from the developer's launch brochure and communications (July 2026) and are subject to change; MahaRERA registration details are available on request and at https://maharera.maharashtra.gov.in. Interior and view photographs are actual site photographs; the tower elevation is an artist's impression. This page is for information only and shall not be construed as an offer for sale, invitation to purchase, booking, allotment or reservation under RERA. GrihVann is an independent advisory.
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > window.innerHeight * 0.7);
+}, { passive: true });
+</script>
+</body>
+</html>
