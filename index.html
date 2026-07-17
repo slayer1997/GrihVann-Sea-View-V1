@@ -271,7 +271,8 @@ h2 em { font-style: italic; color: var(--gold); }
   font-size: clamp(2.6rem, 6vw, 4.6rem); color: var(--gold); display: block;
 }
 .stat b sup { font-size: .45em; }
-.stat span { font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: var(--foam-dim); }
+.stat > span { font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: var(--foam-dim); }
+.stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
 
 /* ============ GALLERY — sticky horizontal scroll, CSS-driven ============ */
 .gallery-wrap { height: 340vh; padding: 0; view-timeline: --gallery block; }
