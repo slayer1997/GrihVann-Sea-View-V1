@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://sea-views.com/projects/three-icc.html">
 <title>Three ICC, Dadar — Sea Views by GrihVann</title>
 <meta name="description" content="THREE ICC at Island City Center, Dadar — three towers by Bombay Realty (Wadia Group). 3 to 5 BHK residences, 1,283–2,994 sq.ft. MahaRERA registered.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,6 +182,103 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
 </style>
+<!-- RealEstateListing structured data (Task 11) — price field intentionally OMITTED: no per-unit price is published for Three ICC -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": "Three ICC \u2014 3 to 5 BHK residences, Island City Center, Dadar",
+  "url": "https://sea-views.com/projects/three-icc.html",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Island City Center, Dadar, Mumbai"
+  },
+  "description": "Three towers by Bombay Realty (Wadia Group) at Island City Center, Dadar: 3\u20135 BHK residences of 1,283\u20132,994 sq.ft. across 46\u201367 floors, MahaRERA registered. Rate card published on enquiry.",
+  "image": "https://sea-views.com/assets/three-icc/towers-dusk.webp",
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "INR",
+    "availability": "https://schema.org/InStock",
+    "description": "Rate card published on enquiry \u2014 no list price published; price intentionally omitted."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the price of a flat at Three ICC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three ICC's rate card is published on enquiry; no list price is publicly advertised, which is why no price is shown here. We publish the developer's rate card the day we receive it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What configurations does Three ICC offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The towers offer 3 to 5 BHK residences ranging from 1,283 to 2,994 square feet carpet, across three towers of 46 to 67 floors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is the developer of Three ICC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three ICC is developed by Bombay Realty, part of the Wadia Group, at Island City Center in Dadar, as a freehold gated estate in Central Mumbai."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Three ICC RERA registered?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Towers A, B and C are registered under MahaRERA numbers PR1171012502563, PR1172022600316 and PR1172022600317, available at the MahaRERA portal."
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* FAQ (Task 13) */
+.faq{background:var(--linen);padding:clamp(48px,7vw,96px) clamp(24px,6vw,72px)}
+.faq .wrap{max-width:1440px;margin:0 auto}
+.faq .eyebrow{font-family:var(--monof);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--brass);margin-bottom:26px}
+.faq-item{border-top:1px solid var(--line);padding:24px 0}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);color:var(--ink);margin-bottom:10px}
+.faq-a{color:var(--muted);max-width:80ch}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://sea-views.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Collection",
+      "item": "https://sea-views.com/index.html#collection"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Three ICC",
+      "item": "https://sea-views.com/projects/three-icc.html"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -192,6 +290,7 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
     <a class="nav-cta" href="../index.html#enquire">Enquire</a>
   </div>
 </nav>
+<nav aria-label="Breadcrumb" style="font-family:var(--monof);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:96px 32px 0"><a href="../index.html" style="color:var(--brass)">Home</a> &nbsp;/&nbsp; <a href="../index.html#collection" style="color:var(--brass)">Collection</a> &nbsp;/&nbsp; <span>Three ICC</span></nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -347,7 +446,35 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
 <section class="cta">
   <div class="eyebrow" style="margin-bottom:26px;">Enquire</div>
   <h2>See the rate card.<br>Book a viewing.</h2>
-  <a class="btn btn-solid" href="../index.html#enquire">Request details →</a>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+    <a class="btn btn-solid" href="../index.html#enquire">Request details →</a>
+    <!-- TODO: Smit verify — real WhatsApp business number -->
+    <a class="btn" style="background:#25D366;color:#0b3d1e;padding:15px 26px;font-weight:500" href="https://wa.me/912200000000?text=Hi%20GrihVann%2C%20I%27d%20like%20the%20Three%20ICC%20rate%20card." rel="nofollow">WhatsApp for the rate card</a>
+  </div>
+</section>
+
+
+<!-- FAQ (Task 13) -->
+<section class="faq">
+  <div class="wrap">
+    <div class="eyebrow">Common questions</div>
+      <div class="faq-item">
+        <div class="faq-q">What is the price of a flat at Three ICC?</div>
+        <p class="faq-a">Three ICC's rate card is published on enquiry; no list price is publicly advertised, which is why no price is shown here. We publish the developer's rate card the day we receive it.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What configurations does Three ICC offer?</div>
+        <p class="faq-a">The towers offer 3 to 5 BHK residences ranging from 1,283 to 2,994 square feet carpet, across three towers of 46 to 67 floors.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who is the developer of Three ICC?</div>
+        <p class="faq-a">Three ICC is developed by Bombay Realty, part of the Wadia Group, at Island City Center in Dadar, as a freehold gated estate in Central Mumbai.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is Three ICC RERA registered?</div>
+        <p class="faq-a">Yes. Towers A, B and C are registered under MahaRERA numbers PR1171012502563, PR1172022600316 and PR1172022600317, available at the MahaRERA portal.</p>
+      </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
