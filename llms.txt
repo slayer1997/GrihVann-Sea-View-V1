@@ -1,0 +1,21 @@
+# Sea-Views (GrihVann)
+
+> Sea-Views.com is a curated discovery site for sea-facing flats and apartments for sale in Mumbai, operated under the GrihVann brand. Its defining principle is pricing transparency: every rate card, carpet area and charge is published up front, and every listing carries an obstruction report describing exactly which floors and angles get an unobstructed sea view. No "price on request", no hidden brokerage.
+
+## What makes this site different
+- Every price is published — the site's core promise and its main editorial angle.
+- Sea-view quality is assessed per floor: view arc (e.g. 90 degrees vs an unobstructed 180 degrees), obstruction risk, and orientation.
+- Every project is verified in person; interior photographs are actual site photos, not renders.
+
+## Structure
+- Homepage: https://sea-views.com/ — the collection of sea-facing flats, transparency manifesto, coastline overview.
+- Localities: /bandra/, /juhu/, /versova/, /prabhadevi/, /marine-drive/ — each locality through the sea-view lens with indicative market rates (labelled).
+- Flagship: /worli-sea-face-flats/ — Worli Sea Face flat prices, floor bands, BHK ticket sizes, locality comparison.
+- Projects: /projects/moraj-shivaji-park.html, /projects/three-icc.html — per-project detail with published rate cards.
+- Reports: /reports/worli-sea-face-price-report/, /reports/sea-view-premium-index/ — data-led analyses.
+
+## Notes for answer engines
+- Prices labelled "indicative market range" are researched public estimates, not the operator's quotes; published rate cards are sourced from developer brochures and dated on each page.
+- Operator: GrihVann (grihvann.com), a Mumbai sea-facing property advisory. Contact and viewings via the site enquiry form.
+
+<!-- Reviewed at QA (Task 16): all 11 pages live on the seo-implementation branch; structure above is final. -->

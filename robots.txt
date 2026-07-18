@@ -1,0 +1,15 @@
+# robots.txt — sea-views.com
+User-agent: *
+Allow: /
+
+# Answer-engine / AI crawlers explicitly welcomed (pricing-transparency angle = free distribution)
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://sea-views.com/sitemap.xml

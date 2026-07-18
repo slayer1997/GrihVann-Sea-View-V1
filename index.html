@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sea Views — Curated Sea-Facing Homes in Mumbai | GrihVann</title>
-<meta name="description" content="Curated new-launch sea-facing residences in South & Central Mumbai. Verified inventory, published pricing, zero hidden brokerage. By GrihVann.">
+<title>Sea Facing Flats in Mumbai — Every Price Open | Sea-Views</title>
+<meta name="description" content="Sea facing flats in Mumbai with every price published — verified sea-view apartments for sale in Worli, Bandra, Dadar &amp; Marine Drive. Book a viewing.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -386,6 +386,21 @@ body::after {
   *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; }
 }
 </style>
+<!-- Organization structured data (Task 5) -->
+<!-- TODO: Smit add NAP — insert "address" (PostalAddress) and "telephone" once the verified office address/phone are available. -->
+<!-- TODO: Smit swap "logo" to a dedicated brand logo asset if one is produced (currently reuses an existing site image). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GrihVann",
+  "url": "https://sea-views.com",
+  "logo": "https://sea-views.com/assets/Sea-views-blog-resize.png",
+  "sameAs": ["https://grihvann.com"],
+  "areaServed": { "@type": "City", "name": "Mumbai" },
+  "description": "GrihVann curates sea-facing flats and apartments for sale across Mumbai, publishing every price and obstruction report up front."
+}
+</script>
 </head>
 <body>
 
@@ -408,8 +423,8 @@ body::after {
   <div class="hero-veil"></div>
   <div class="hero-content">
     <p class="hero-kicker">South &amp; Central Mumbai · New Launches</p>
-    <h1>The horizon, from your <em>living room</em></h1>
-    <p class="hero-sub">Curated new-launch sea-facing residences across Mumbai's coastline. The water you are watching is rendered live — the views we sell are real, and verified.</p>
+    <h1>Sea facing flats in Mumbai — <em>the horizon, from your living room</em></h1>
+    <p class="hero-sub">Curated sea facing flats and apartments for sale across Mumbai's coastline — every price published up front. The water you are watching is rendered live; the views we sell are real, and verified.</p>
   </div>
   <span class="scroll-hint">Scroll</span>
 </header>
@@ -435,9 +450,9 @@ body::after {
   <div class="residences-head">
     <div>
       <p class="section-kicker reveal">The Collection</p>
-      <h2 class="reveal">Homes that <em>face the water</em></h2>
+      <h2 class="reveal">Sea facing flats that <em>face the water</em></h2>
     </div>
-    <p class="reveal">Every project we list is sea-facing and verified in person — floor by floor, view by view. If a sightline is obstructed, we tell you the floor and the angle.</p>
+    <p class="reveal">Every sea-facing flat we list for sale is verified in person — floor by floor, view by view, with the price published. If a sightline is obstructed, we tell you the floor and the angle.</p>
   </div>
   <div class="cards">
     <article class="card is-featured reveal">
@@ -529,10 +544,10 @@ body::after {
       <p class="section-kicker reveal">The Coastline</p>
       <h2 class="reveal">From Marine Drive, <em>to Madh Island</em></h2>
       <ul class="loc-list reveal">
-        <li><b>Marine Drive</b><span>02 live projects</span></li>
-        <li><b>Worli Sea Face</b><span>03 live projects</span></li>
-        <li><b>Bandra Bandstand</b><span>02 live projects</span></li>
-        <li><b>Versova &amp; Madh</b><span>02 live projects</span></li>
+        <li><a href="marine-drive/"><b>Marine Drive</b></a><span>02 live projects</span></li>
+        <li><a href="worli-sea-face-flats/"><b>Worli Sea Face</b></a><span>03 live projects</span></li>
+        <li><a href="bandra/"><b>Bandra Bandstand</b></a><span>02 live projects</span></li>
+        <li><a href="versova/"><b>Versova &amp; Madh</b></a><span>02 live projects</span></li>
         <li><b>The sea, from your bed</b><span>0 min</span></li>
       </ul>
     </div>
@@ -553,7 +568,7 @@ body::after {
 <!-- ================= CTA ================= -->
 <section class="cta" id="enquire">
   <p class="section-kicker reveal">Private Viewings · By appointment</p>
-  <h2 class="reveal">Book a private viewing<br><em>of the horizon.</em></h2>
+  <h2 class="reveal">Book a private viewing<br><em>of your sea-facing flat.</em></h2>
   <form class="cta-panel reveal" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'text-align:center;font-family:var(--font-serif);font-size:1.4rem\'>Thank you — we will be in touch within one business day.</p>'">
     <div class="field"><label for="f-name">Name</label><input id="f-name" required autocomplete="name"></div>
     <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" required autocomplete="email"></div>
@@ -566,6 +581,8 @@ body::after {
 <footer>
   <a class="brand" href="#top">Grih<em>Vann</em></a>
   <span><a href="#collection">Collection</a> · <a href="#gallery">Gallery</a> · <a href="tel:+912260000000">+91 22 6000 0000</a></span>
+  <span class="locrow"><a href="worli-sea-face-flats/">Worli Sea Face flat prices</a> · <a href="bandra/">sea facing flats in Bandra</a> · <a href="juhu/">Juhu</a> · <a href="versova/">Versova</a> · <a href="prabhadevi/">Prabhadevi</a> · <a href="marine-drive/">Marine Drive</a></span>
+  <span class="locrow"><a href="reports/worli-sea-face-price-report/">Worli Sea Face Price Report</a> · <a href="reports/sea-view-premium-index/">Sea-View Premium Index</a></span>
   <span>© 2026 GrihVann · sea-views.com · An independent advisory. Project RERA details on respective project pages.</span>
 </footer>
 
