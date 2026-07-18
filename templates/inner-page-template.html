@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- {{TITLE}} <= 60 chars, {{META}} <= 155 chars -->
+<title>{{TITLE}}</title>
+<meta name="description" content="{{META}}">
+<link rel="canonical" href="https://sea-views.com/{{CANONICAL_PATH}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- {{PREFIX}} = relative path to site root: "../" for /page/, "../../" for /projects/slug/ -->
+<link rel="stylesheet" href="{{PREFIX}}assets/site.css">
+<script src="{{PREFIX}}assets/site.js" defer></script>
+<!-- JSON-LD SLOT: BreadcrumbList + (RealEstateListing|WebPage) + FAQPage go here -->
+{{JSONLD}}
+</head>
+<body>
+
+<!-- header partial (no hero animation on inner pages) -->
+{{HEADER}}
+
+<!-- static image hero -->
+<header class="hero">
+  <img src="{{HERO_IMG}}" alt="{{HERO_ALT}}" fetchpriority="high" width="2200" height="1228">
+  <div class="hero-shade"></div>
+  <div class="hero-copy">
+    <div class="eyebrow">{{EYEBROW}}</div>
+    <h1>{{H1}}</h1>
+    <div class="sub">{{SUBHEAD}}</div>
+  </div>
+</header>
+
+<!-- breadcrumb trail -->
+<nav class="crumb" aria-label="Breadcrumb">{{BREADCRUMB}}</nav>
+
+<!-- main content -->
+<main class="prose pad wrap">
+  {{CONTENT}}
+</main>
+
+<!-- FAQ block -->
+<section class="faq pad">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:26px;">Questions</div>
+    {{FAQ_ITEMS}}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>{{CTA_H2}}</h2>
+  <p class="sub">{{CTA_SUB}}</p>
+  <div class="cta-actions">
+    <a class="btn btn-solid" href="{{PREFIX}}index.html#enquire">Request details →</a>
+    <!-- TODO: Smit verify — real WhatsApp business number -->
+    <a class="btn btn-wa" href="https://wa.me/912200000000" rel="nofollow">WhatsApp us</a>
+  </div>
+</section>
+
+<!-- footer partial -->
+{{FOOTER}}
+
+</body>
+</html>
