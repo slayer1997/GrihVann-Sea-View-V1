@@ -636,12 +636,12 @@ body::after {
 <section class="cta" id="enquire">
   <p class="section-kicker reveal">Private Viewings · By appointment</p>
   <h2 class="reveal">Book a private viewing<br><em>of your sea-facing flat.</em></h2>
-  <form class="cta-panel reveal" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'text-align:center;font-family:var(--font-serif);font-size:1.4rem\'>Thank you — we will be in touch within one business day.</p>'">
-    <div class="field"><label for="f-name">Name</label><input id="f-name" required autocomplete="name"></div>
-    <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" required autocomplete="email"></div>
-    <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel"></div>
-    <div class="field"><label for="f-msg">Which residence calls to you?</label><textarea id="f-msg" placeholder="Moraj Shivaji Park · Three ICC · Meridian Worli"></textarea></div>
-    <button class="btn-gold" type="submit">Arrange my viewing</button>
+  <form class="cta-panel reveal" id="enquiry" novalidate>
+    <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" required autocomplete="name"></div>
+    <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
+    <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="f-msg">Which residence calls to you?</label><textarea id="f-msg" name="message" placeholder="Moraj Shivaji Park · Three ICC · Meridian Worli"></textarea></div>
+    <button class="btn-gold" type="submit">Arrange my viewing</button><p style="text-align:center;margin-top:1rem;font-size:.85rem;font-family:var(--font-sans)">Prefer WhatsApp? <a href="https://wa.me/919289840824?text=Hi%20GrihVann%2C%20I%27d%20like%20to%20enquire." rel="nofollow">Message us directly →</a></p>
   </form>
 </section>
 
@@ -898,5 +898,5 @@ if (!CSS.supports('animation-timeline: view()')) {
   document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(3rem)'; io.observe(el); });
 }
 </script>
-</body>
+<script>(function(){var gclid=new URLSearchParams(location.search).get('gclid');if(gclid)sessionStorage.setItem('gclid',gclid);})();var ef=document.getElementById('enquiry');if(ef){ef.addEventListener('submit',function(e){e.preventDefault();var f=e.target,btn=f.querySelector('button');btn.disabled=true;btn.textContent='Sending…';var data=new FormData(f);data.set('gclid',sessionStorage.getItem('gclid')||'');data.set('page',location.href);fetch('https://script.google.com/macros/s/AKfycbw8Xae1-8TaUREihkODfrz8dYb1JE3zvXNT0Yf-Wb-zBvZgbVyuwVucH0X30uKrsTu7/exec',{method:'POST',mode:'no-cors',body:data});f.innerHTML='<p style="text-align:center;font-family:var(--font-serif);font-size:1.4rem">Thank you — we will be in touch within one business day.</p>';});}</script></body>
 </html>
