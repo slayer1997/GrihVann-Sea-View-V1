@@ -298,6 +298,11 @@ h2 em { font-style: italic; color: var(--gold); }
 .stat > span { font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: rgba(251,249,244,.68); }
 .stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
 
+/* ============ STATS — live WebGL caustics backdrop ============ */
+.stats { position: relative; overflow: clip; }
+.stats-shader { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stats > .stat { position: relative; z-index: 1; }
+
 /* ============ GALLERY — sticky horizontal scroll, CSS-driven ============ */
 .gallery-wrap { height: 340vh; padding: 0; view-timeline: --gallery block; }
 .gallery-sticky {
@@ -376,6 +381,17 @@ h2 em { font-style: italic; color: var(--gold); }
 .report-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; margin-bottom: .6rem; }
 .report-card p { color: var(--foam-dim); font-size: .92rem; margin-bottom: 1.2rem; }
 .report-cta { color: var(--gold); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ============ ASSURANCES ============ */
+.assure { background: var(--ink-2); }
+.assure-head { max-width: 640px; margin-bottom: 3rem; }
+.assure-head p { color: var(--foam-dim); margin-top: 1rem; text-wrap: pretty; }
+.assure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1.4rem; }
+.assure-item { background: var(--paper); border: 1px solid var(--hairline); border-radius: 18px; padding: 2rem; transition: border-color .3s, transform .4s var(--ease-out-expo); }
+.assure-item:hover { border-color: var(--gold); transform: translateY(-3px); }
+.assure-item svg { width: 2rem; height: 2rem; color: var(--gold); }
+.assure-item h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.25rem; margin: 1.1rem 0 .5rem; }
+.assure-item p { color: var(--foam-dim); font-size: .9rem; line-height: 1.55; }
 
 /* ============ CTA / FORM ============ */
 .cta { text-align: center; }
@@ -593,6 +609,7 @@ body::after {
 
 <!-- ================= STATS ================= -->
 <section class="stats" id="prices">
+  <canvas class="stats-shader" aria-hidden="true"></canvas>
   <div class="stat reveal"><b><sup>₹</sup><span data-count="4200">4,200</span><sup> Cr</sup></b><span>Transacted, fee-transparent</span></div>
   <div class="stat reveal"><b><span data-count="100">100</span><sup>%</sup></b><span>Prices published publicly</span></div>
   <div class="stat reveal"><b><span data-count="9">9</span></b><span>Years on the coastline</span></div>
@@ -627,6 +644,47 @@ body::after {
     </div>
   </div>
 </div>
+
+<!-- ================= ASSURANCES ================= -->
+<section class="assure" id="assurances">
+  <div class="assure-head">
+    <p class="section-kicker reveal">How We Work</p>
+    <h2 class="reveal">Verified, <em>not staged</em></h2>
+    <p class="reveal">The same standard on every listing, before you ever have to ask for it.</p>
+  </div>
+  <div class="assure-grid">
+    <div class="assure-item reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+      <h3>Published rate cards</h3>
+      <p>Every price, carpet area and charge is public on the listing &mdash; no &ldquo;price on request,&rdquo; no follow-up call needed to find out what it costs.</p>
+    </div>
+    <div class="assure-item reveal" style="animation-delay:.06s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8v3c0 5 4 8.5 9 10 5-1.5 9-5 9-10V8z"/><path d="M9 12l2 2 4-4"/></svg>
+      <h3>Floor-by-floor obstruction reports</h3>
+      <p>We tell you which floors get the unobstructed sea view and which don&rsquo;t, before you book a viewing &mdash; not after you&rsquo;ve paid the full-arc price.</p>
+    </div>
+    <div class="assure-item reveal" style="animation-delay:.12s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+      <h3>MahaRERA registered</h3>
+      <p>Agent Reg. A51900036950. Project RERA numbers are published on every project page, not buried in the fine print.</p>
+    </div>
+    <div class="assure-item reveal" style="animation-delay:.18s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg>
+      <h3>Direct on WhatsApp</h3>
+      <p>Message us straight from any listing &mdash; a senior broker replies, not a call-centre script.</p>
+    </div>
+    <div class="assure-item reveal" style="animation-delay:.24s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+      <h3>Private viewings, by appointment</h3>
+      <p>Scheduled around you, not a queue of open-house strangers walking through someone else&rsquo;s home.</p>
+    </div>
+    <div class="assure-item reveal" style="animation-delay:.3s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3-6 6-9 9-9s6 3 9 9"/><circle cx="12" cy="7" r="4"/></svg>
+      <h3>Zero hidden brokerage</h3>
+      <p>&#8377;4,200 Cr transacted, fee-transparent, over nine years on the coastline. What we quote is what you pay us.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ================= QUOTE ================= -->
 <section class="quote">
@@ -766,6 +824,92 @@ if (!CSS.supports('animation-timeline: view()')) {
   }), { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(3rem)'; io.observe(el); });
 }
+</script>
+<script>
+/* ============ live WebGL caustics — Stats section backdrop ============ */
+(() => {
+  const canvas = document.querySelector('.stats-shader');
+  if (!canvas) return;
+  const gl = canvas.getContext('webgl2', { antialias: false, alpha: true });
+  if (!gl) return; /* falls back to the solid --abyss background already on .stats */
+
+  const VERT = `#version 300 es
+layout(location=0) in vec2 aPos;
+void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }`;
+
+  const FRAG = `#version 300 es
+precision highp float;
+out vec4 fragColor;
+uniform vec2 uRes;
+uniform float uTime;
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+float noise(vec2 p){
+  vec2 i = floor(p), f = fract(p);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(mix(hash(i), hash(i + vec2(1.0,0.0)), u.x), mix(hash(i + vec2(0.0,1.0)), hash(i + vec2(1.0,1.0)), u.x), u.y);
+}
+float fbm(vec2 p){
+  float v = 0.0, a = 0.5;
+  for(int i = 0; i < 4; i++){ v += a * noise(p); p = mat2(1.6,1.2,-1.2,1.6) * p; a *= 0.5; }
+  return v;
+}
+void main(){
+  vec2 uv = gl_FragCoord.xy / uRes.y;
+  float t = uTime * 0.2;
+  vec2 q = vec2(fbm(uv * 2.2 + t * 0.3), fbm(uv * 2.2 - t * 0.24));
+  float w = fbm(uv * 3.0 + q * 2.2 + vec2(t * 0.5, -t * 0.4));
+  float c = pow(smoothstep(0.35, 0.95, w), 3.0);
+  vec3 base = mix(vec3(0.114, 0.165, 0.200), vec3(0.243, 0.392, 0.455), uv.y * 0.6);
+  vec3 col = base + vec3(0.604, 0.482, 0.247) * c * 0.55;
+  fragColor = vec4(col, c * 0.9);
+}`;
+
+  const compile = (type, src) => {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  };
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+  gl.useProgram(prog);
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+  const uRes = gl.getUniformLocation(prog, 'uRes');
+  const uTime = gl.getUniformLocation(prog, 'uTime');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const start = performance.now();
+  let visible = true, raf = 0;
+
+  const resize = () => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5) * 0.6;
+    const w = Math.max(1, Math.floor(canvas.clientWidth * dpr));
+    const h = Math.max(1, Math.floor(canvas.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+  };
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { threshold: 0 }).observe(canvas);
+
+  const frame = () => {
+    raf = requestAnimationFrame(frame);
+    if (!visible) return;
+    resize();
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.uniform1f(uTime, reduced ? 8 : (performance.now() - start) / 1000);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  };
+  frame();
+})();
 </script>
 <script>(function(){var gclid=new URLSearchParams(location.search).get('gclid');if(gclid)sessionStorage.setItem('gclid',gclid);})();var ef=document.getElementById('enquiry');if(ef){ef.addEventListener('submit',function(e){e.preventDefault();var f=e.target,btn=f.querySelector('button');btn.disabled=true;btn.textContent='Sending…';var data=new FormData(f);data.set('gclid',sessionStorage.getItem('gclid')||'');data.set('page',location.href);fetch('https://script.google.com/macros/s/AKfycbw8Xae1-8TaUREihkODfrz8dYb1JE3zvXNT0Yf-Wb-zBvZgbVyuwVucH0X30uKrsTu7/exec',{method:'POST',mode:'no-cors',body:data});f.innerHTML='<p style="text-align:center;font-family:var(--font-serif);font-size:1.4rem">Thank you — we will be in touch within one business day.</p>';});}</script></body>
 </html>
