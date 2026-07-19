@@ -9,7 +9,7 @@
 
 ## Structure
 - Homepage: https://sea-views.com/ — the collection of sea-facing flats, transparency manifesto, coastline overview.
-- Localities: /bandra/, /juhu/, /versova/, /prabhadevi/, /marine-drive/ — each locality through the sea-view lens with indicative market rates (labelled).
+- Localities: /dadar/, /mahalaxmi/, /prabhadevi/, /bandra/, /juhu/, /versova/, /marine-drive/ — each locality through the sea-view lens with indicative market rates (labelled).
 - Flagship: /worli-sea-face-flats/ — Worli Sea Face flat prices, floor bands, BHK ticket sizes, locality comparison.
 - Projects: /projects/moraj-shivaji-park.html, /projects/three-icc.html — per-project detail with published rate cards.
 - Reports: /reports/worli-sea-face-price-report/, /reports/sea-view-premium-index/ — data-led analyses.
