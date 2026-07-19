@@ -154,7 +154,20 @@ nav#nav{z-index:60}
   nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
 
-/* ============ FORM (contact/enquiry, shared inner-page style) ============ */
+/* ============ COLLECTION DROPDOWN (desktop) + drawer sub-links ============ */
+.nav-drop{position:relative;margin-left:28px}
+.nav-drop>a.navlink{margin-left:0}
+.nav-drop-panel{display:none;position:absolute;top:100%;left:-18px;padding-top:16px;z-index:70}
+.nav-drop:hover .nav-drop-panel,.nav-drop:focus-within .nav-drop-panel{display:block}
+.nav-drop-box{background:var(--cream);border:1px solid var(--line);box-shadow:0 14px 34px rgba(20,17,12,.16);padding:8px 0;display:flex;flex-direction:column;min-width:190px}
+.nav-drop-box a{padding:10px 18px;font-family:var(--monof);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.nav-drop-box a:hover{color:var(--gold)}
+.nav-sub{display:none}
+@media (max-width:900px){
+  .nav-drop{display:contents}
+  .nav-drop-panel{display:none !important}
+  .nav-sub{display:block;padding-left:22px !important;font-size:12px !important;opacity:.75}
+}
 .form-panel{max-width:640px;background:var(--linen);border:1px solid var(--line);border-radius:16px;padding:clamp(28px,5vw,48px);margin-top:32px}
 .field{display:grid;gap:8px;margin-bottom:22px}
 .field label{font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}

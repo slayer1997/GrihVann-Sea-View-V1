@@ -83,6 +83,13 @@ nav a.nav-cta{
   transition:background .25s ease,color .25s ease;
 }
 nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
+nav .nav-drop{position:relative;display:inline-block}
+nav .nav-drop-panel{display:none;position:absolute;top:100%;left:-1.2rem;padding-top:1.1rem;z-index:97}
+nav .nav-drop:hover .nav-drop-panel,nav .nav-drop:focus-within .nav-drop-panel{display:block}
+nav .nav-drop-box{background:var(--cream);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(33,30,26,.14);padding:.5rem 0;display:flex;flex-direction:column;min-width:210px}
+nav .nav-drop-box a{color:var(--ink);padding:.7rem 1.2rem;font-family:var(--monof);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+nav .nav-drop-box a:hover{color:var(--brass)}
+nav .nav-sub{display:none}
 
 /* hero */
 .hero{position:relative;height:88vh;height:88svh;min-height:520px;overflow:hidden;background:#1a1712}
@@ -279,7 +286,7 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
       "@type": "ListItem",
       "position": 2,
       "name": "Dadar",
-      "item": "https://sea-views.com/localities/dadar/"
+      "item": "https://sea-views.com/dadar/"
     },
     {
       "@type": "ListItem",
@@ -296,7 +303,8 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
 <nav id="nav">
   <a class="logo" href="/">Grih<span>Vann</span></a>
   <div id="nav-links">
-    <a class="navlink" href="/collection/">Collection</a>
+    <span class="nav-drop"><a class="navlink" href="/collection/">Collection</a><span class="nav-drop-panel"><span class="nav-drop-box"><a href="/dadar/">Dadar</a><a href="/worli-sea-face-flats/">Worli Sea Face</a><a href="/mahalaxmi/">Mahalaxmi</a><a href="/tardeo/">Tardeo</a></span></span></span>
+<a class="navlink nav-sub" href="/dadar/">Dadar</a><a class="navlink nav-sub" href="/worli-sea-face-flats/">Worli Sea Face</a><a class="navlink nav-sub" href="/mahalaxmi/">Mahalaxmi</a><a class="navlink nav-sub" href="/tardeo/">Tardeo</a>
     <a class="navlink" href="/#location">Coastline</a>
     <a class="navlink" href="/reports/">Reports</a>
     <a class="navlink" href="/about/">About</a>
@@ -304,7 +312,7 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
   </div>
   <button class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
 </nav>
-<nav aria-label="Breadcrumb" style="font-family:var(--monof);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:96px 32px 0"><a href="/" style="color:var(--brass)">Home</a> &nbsp;/&nbsp; <a href="/localities/dadar/" style="color:var(--brass)">Dadar</a> &nbsp;/&nbsp; <span>Moraj Shivaji Park</span></nav>
+<nav aria-label="Breadcrumb" style="font-family:var(--monof);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:96px 32px 0"><a href="/" style="color:var(--brass)">Home</a> &nbsp;/&nbsp; <a href="/dadar/" style="color:var(--brass)">Dadar</a> &nbsp;/&nbsp; <span>Moraj Shivaji Park</span></nav>
 
 <!-- HERO: real photo from the actual tower -->
 <header class="hero">
@@ -481,10 +489,10 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
     </div>
     <div class="footer-links">
       <a href="/collection/">Collection</a>
-      <a href="/localities/dadar/">Dadar</a>
-      <a href="/localities/mahalaxmi/">Mahalaxmi</a>
-      <a href="/localities/tardeo/">Tardeo</a>
-      <a href="/localities/worli-sea-face-flats/">Worli Sea Face</a>
+      <a href="/dadar/">Dadar</a>
+      <a href="/mahalaxmi/">Mahalaxmi</a>
+      <a href="/tardeo/">Tardeo</a>
+      <a href="/worli-sea-face-flats/">Worli Sea Face</a>
       <a href="/reports/worli-sea-face-price-report/">Worli Price Report</a>
       <a href="/reports/sea-view-premium-index/">Premium Index</a>
       <a href="/about/">About</a>

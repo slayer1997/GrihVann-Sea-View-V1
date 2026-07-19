@@ -5,12 +5,7 @@
 /projects/moraj-shivaji-park.html  /projects/moraj-shivaji-park/  301
 /projects/three-icc.html  /projects/three-icc/  301
 
-# Locality hierarchy move (July 2026) — old root-level locality URLs 301 into /localities/
-/dadar/*  /localities/dadar/:splat  301
-/mahalaxmi/*  /localities/mahalaxmi/:splat  301
-/worli-sea-face-flats/*  /localities/worli-sea-face-flats/:splat  301
-
-# Retired locality pages — fold into the Collection hub until they return
+# Retired locality pages (July 2026) — fold into the Collection hub until they return
 /bandra/*  /collection/  301
 /juhu/*  /collection/  301
 /versova/*  /collection/  301
