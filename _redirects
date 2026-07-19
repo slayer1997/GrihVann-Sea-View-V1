@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects — sea-views.com
+# Canonicalize away from raw /index.html and legacy .html project URLs
+
+/index.html  /  301
+/projects/moraj-shivaji-park.html  /projects/moraj-shivaji-park/  301
+/projects/three-icc.html  /projects/three-icc/  301
