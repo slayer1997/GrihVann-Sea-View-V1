@@ -1,0 +1,9 @@
+{
+  "name": "grihvann-sea-views",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GrihVann sea-views.com static site — dev server for local preview only.",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
