@@ -92,6 +92,11 @@ body {
 @media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor { display: none; } }
 
 /* ============ NAV ============ */
+.top-veil {
+  /* soft paper wash behind the nav strip only — keeps brand/links readable over the sea */
+  position: fixed; inset: 0 0 auto 0; height: 112px; z-index: 85; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(251,249,244,.66), rgba(251,249,244,.3) 55%, transparent);
+}
 nav {
   position: fixed; inset: 0 0 auto 0; z-index: 90;
   display: flex; align-items: center; justify-content: space-between;
@@ -106,7 +111,6 @@ nav {
 .brand {
   font-family: var(--font-serif); font-size: 1.45rem; font-weight: 400;
   letter-spacing: .06em; color: var(--foam); text-decoration: none;
-  text-shadow: 0 0 12px rgba(251,249,244,.9), 0 0 4px rgba(251,249,244,.8);
 }
 .brand em { font-style: italic; color: var(--gold); }
 .nav-links { display: flex; gap: 2.4rem; align-items: center; }
@@ -114,7 +118,6 @@ nav {
   color: var(--foam-dim); text-decoration: none; font-size: .8rem;
   letter-spacing: .18em; text-transform: uppercase;
   transition: color .3s;
-  text-shadow: 0 0 10px rgba(251,249,244,.9), 0 0 3px rgba(251,249,244,.8);
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta {
@@ -140,7 +143,6 @@ nav {
   position: absolute; top: clamp(4.6rem, 11vh, 6.4rem); right: clamp(1.6rem, 5vw, 4rem);
   display: none; align-items: center; gap: .55rem;
   font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--foam-dim);
-  text-shadow: 0 0 10px rgba(251,249,244,.9), 0 0 3px rgba(251,249,244,.8);
 }
 .live-tag::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
@@ -151,29 +153,30 @@ nav {
 .hero.is-live .live-tag { display: flex; }
 @media (max-width: 760px) { .live-tag { display: none !important; } }
 .hero-content {
-  position: absolute; inset: 0; display: grid; place-content: end start;
+  position: absolute; inset: 0; z-index: 1; display: grid; place-content: end start;
   padding: clamp(1.6rem, 6vw, 5rem); padding-bottom: clamp(4rem, 12vh, 8rem);
+}
+.hero-content::before {
+  /* localized paper glow behind the copy block only — soft edges, no scrim lines */
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(64% 60% at 19% 76%, rgba(251,249,244,.78), rgba(251,249,244,.42) 52%, transparent 76%);
 }
 .hero-kicker {
   font-size: .78rem; letter-spacing: .34em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 1.4rem;
   display: flex; align-items: center; gap: 1rem;
-  text-shadow: 0 0 12px rgba(251,249,244,.95), 0 0 4px rgba(251,249,244,.85);
 }
-.hero-kicker::before { content: ""; width: 48px; height: 1px; background: var(--gold); box-shadow: 0 0 8px rgba(251,249,244,.9); }
+.hero-kicker::before { content: ""; width: 48px; height: 1px; background: var(--gold); }
 h1 {
   font-family: var(--font-serif); font-weight: 300;
   font-size: clamp(2.8rem, 9vw, 7.5rem);
   line-height: 1.02; letter-spacing: -0.015em;
   text-wrap: balance; max-width: 12ch;
-  /* paper halo — keeps the dark serif legible directly over the live sea, no scrim */
-  text-shadow: 0 2px 26px rgba(251,249,244,.95), 0 0 10px rgba(251,249,244,.85);
 }
 h1 em { font-style: italic; color: var(--gold); font-weight: 300; }
 .hero-sub {
   margin-top: 1.6rem; max-width: 44ch; color: var(--foam-dim);
   font-size: clamp(.95rem, 1.4vw, 1.1rem); text-wrap: pretty;
-  text-shadow: 0 1px 14px rgba(251,249,244,.95), 0 0 6px rgba(251,249,244,.85);
 }
 .hero-content > * { opacity: 0; animation: rise-in 1.2s var(--ease-out-expo) forwards; }
 .hero-content > *:nth-child(2) { animation-delay: .15s; }
@@ -184,7 +187,6 @@ h1 em { font-style: italic; color: var(--gold); font-weight: 300; }
   position: absolute; bottom: 2rem; right: clamp(1.6rem, 5vw, 4rem);
   font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: var(--foam-dim);
   writing-mode: vertical-rl; display: flex; align-items: center; gap: .8rem;
-  text-shadow: 0 0 10px rgba(251,249,244,.9), 0 0 3px rgba(251,249,244,.8);
 }
 .scroll-hint::after {
   content: ""; width: 1px; height: 56px;
@@ -486,6 +488,7 @@ body::after {
 
 <div class="progress" aria-hidden="true"></div>
 <div class="cursor" aria-hidden="true"></div>
+<div class="top-veil" aria-hidden="true"></div>
 
 <nav>
   <a class="brand" href="/">Grih<em>Vann</em></a>
