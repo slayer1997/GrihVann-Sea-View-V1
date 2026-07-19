@@ -1,0 +1,130 @@
+/* ============================================================
+   site.css — shared inner-page design system for sea-views.com
+   Extracted from the cream editorial project-page template
+   (projects/three-icc.html). Used by all inner pages: locality,
+   project, Worli flagship, and report pages.
+   The homepage (index.html) is intentionally self-contained
+   (dark theme + GSAP/canvas hero) and does NOT use this file.
+   ============================================================ */
+:root{
+  --ink:#211E1A; --cream:#FAF7F1; --sand:#DED8CC; --linen:#F1EBDF;
+  --brass:#9A7B3F; --gold:#BE9E5E; --muted:#55504A;
+  --line:rgba(33,30,26,0.12);
+  --serif:'EB Garamond', Georgia, serif;
+  --display:'Cormorant Garamond', Georgia, serif;
+  --monof:'IBM Plex Mono', ui-monospace, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-0.005em;line-height:1.06;text-wrap:balance}
+h2{font-size:clamp(34px,5.2vw,52px)}
+h3{font-size:clamp(24px,3.4vw,30px)}
+p{max-width:72ch}
+.wrap{max-width:1440px;margin:0 auto}
+.pad{padding:clamp(48px,7vw,96px) clamp(24px,6vw,72px)}
+.eyebrow{font-family:var(--monof);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--brass)}
+.italic-gold{font-style:italic;color:var(--brass)}
+.btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--monof);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;border:none;transition:opacity .2s, background .2s, color .2s}
+.btn-solid{background:var(--ink);color:var(--cream);padding:15px 26px}
+.btn-solid:hover{opacity:.86}
+.btn-wa{background:#25D366;color:#0b3d1e;padding:15px 26px;font-weight:500}
+.btn-wa:hover{opacity:.9}
+.btn-ghost{border:1px solid var(--gold);color:var(--ink);padding:14px 24px}
+.btn-ghost:hover{background:var(--gold);color:var(--ink)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 32px;color:var(--cream);transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+nav.scrolled{background:var(--cream);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+nav .logo{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:0.28em;text-transform:uppercase}
+nav .logo span{color:var(--gold)}
+nav a.navlink{margin-left:28px;opacity:.85;font-family:var(--monof);font-size:12px;letter-spacing:0.14em;text-transform:uppercase}
+nav a.navlink:hover{opacity:1;border-bottom:1px solid var(--gold)}
+nav a.nav-cta{margin-left:28px;font-family:var(--monof);font-size:12px;letter-spacing:0.14em;text-transform:uppercase;border:1px solid var(--gold);padding:9px 18px;transition:background .25s ease,color .25s ease}
+nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
+
+/* hero */
+.hero{position:relative;height:70vh;height:70svh;min-height:440px;overflow:hidden;background:#1a1712}
+.hero.tall{height:88vh;height:88svh;min-height:520px}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,17,12,.66) 0%,rgba(20,17,12,.08) 55%)}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;padding:0 clamp(24px,6vw,72px) 56px;color:var(--cream)}
+.hero-copy .eyebrow{color:var(--gold);margin-bottom:14px}
+.hero-copy h1{font-size:clamp(40px,6vw,80px);max-width:20ch;color:var(--cream)}
+.hero-copy .sub{font-size:clamp(18px,2vw,22px);margin-top:16px;color:rgba(250,247,241,.85);font-style:italic;max-width:60ch}
+
+/* breadcrumb */
+.crumb{font-family:var(--monof);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding:clamp(90px,11vw,120px) clamp(24px,6vw,72px) 0}
+.crumb a{color:var(--brass)}
+.crumb a:hover{color:var(--ink)}
+.crumb span{color:var(--muted)}
+
+/* fact strip */
+.facts{background:var(--ink);color:var(--cream);display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:clamp(32px,4vw,48px) clamp(24px,6vw,72px)}
+.fact .big{font-family:var(--display);font-size:clamp(28px,3.4vw,40px);color:var(--gold);line-height:1.1}
+.fact .lbl{font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,241,.65);margin-top:8px}
+
+/* prose */
+.prose h2{margin:0 0 22px}
+.prose h3{margin:38px 0 14px}
+.prose p{color:var(--muted);margin-bottom:18px}
+.prose ul{margin:0 0 20px 20px;color:var(--muted)}
+.prose li{margin-bottom:8px}
+.lede p{font-family:var(--display);font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.22;color:var(--ink);max-width:24ch}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
+
+/* generic data table */
+.table{border-top:2px solid var(--ink);margin-top:8px}
+.table-head,.table-row{display:grid;gap:14px;align-items:center}
+.table-head{padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--monof);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--brass)}
+.table-row{padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--display);font-size:20px}
+.table-row .n{font-family:var(--monof);font-size:15px}
+.cols-2 .table-head,.cols-2 .table-row{grid-template-columns:1fr 1fr}
+.cols-3 .table-head,.cols-3 .table-row{grid-template-columns:1.2fr 1fr 1fr}
+.cols-4 .table-head,.cols-4 .table-row{grid-template-columns:1.3fr 1fr 1fr 1fr}
+.table-head span:not(:first-child),.table-row span:not(:first-child){text-align:right}
+
+/* indicative label / badges */
+.badge{display:inline-block;font-family:var(--monof);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--line);color:var(--brass);border-radius:2px;vertical-align:middle}
+.note{font-family:var(--monof);font-size:12px;color:var(--muted);margin-top:14px;line-height:1.7}
+
+/* FAQ */
+.faq{background:var(--linen)}
+.faq-item{border-top:1px solid var(--line);padding:24px 0}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);color:var(--ink);margin-bottom:10px}
+.faq-a{color:var(--muted);max-width:80ch}
+
+/* chart empty-state */
+.chart-empty{border:1px dashed var(--brass);background:rgba(190,158,94,.06);border-radius:4px;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px;margin-top:8px}
+.chart-empty .icon{font-family:var(--display);font-size:44px;color:var(--brass);opacity:.5}
+.chart-empty .msg{font-family:var(--monof);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* updated stamp */
+.updated{font-family:var(--monof);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--brass)}
+
+/* cta */
+.cta{text-align:center;padding:clamp(72px,9vw,104px) clamp(24px,6vw,72px)}
+.cta h2{font-size:clamp(38px,6vw,60px);margin:0 0 20px}
+.cta .sub{color:var(--muted);margin:0 auto 32px;max-width:52ch}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* footer */
+.site-footer{background:var(--ink);color:var(--cream)}
+.footer-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding:clamp(40px,5vw,56px) clamp(24px,6vw,72px)}
+.footer-brand .name{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:0.3em}
+.footer-brand .domain{font-family:var(--monof);font-size:10px;letter-spacing:0.28em;color:var(--gold)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--monof);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,241,0.6)}
+.footer-links a:hover{color:var(--cream)}
+.rera{max-width:1440px;margin:0 auto;padding:0 clamp(24px,6vw,72px) clamp(32px,4vw,44px);font-family:var(--monof);font-size:10px;line-height:1.7;color:rgba(250,247,241,.45)}
+
+@media (max-width:900px){
+  .facts{grid-template-columns:1fr 1fr}
+  .two-col,.loc-grid{grid-template-columns:1fr}
+  nav{padding:16px 24px}
+  nav a.navlink{display:none}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .cols-4 .table-head,.cols-4 .table-row{grid-template-columns:1.2fr 1fr 1fr;font-size:16px}
+}
