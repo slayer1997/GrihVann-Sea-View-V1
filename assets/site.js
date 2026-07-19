@@ -1,6 +1,6 @@
 /* site.js — shared inner-page behaviour for sea-views.com
    1) nav solidifies on scroll  2) reveal-on-scroll for [data-reveal] */
-(function () {
+(function () {var gclid=new URLSearchParams(location.search).get("gclid");if(gclid)sessionStorage.setItem("gclid",gclid);
   var nav = document.getElementById("nav");
   if (nav) {
     var onScroll = function () {
