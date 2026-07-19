@@ -18,4 +18,4 @@
 - Prices labelled "indicative market range" are researched public estimates, not the operator's quotes; published rate cards are sourced from developer brochures and dated on each page.
 - Operator: GrihVann (grihvann.com), a Mumbai sea-facing property advisory. Contact and viewings via the site enquiry form.
 
-<!-- Reviewed at QA (Task 16): all 11 pages live on the seo-implementation branch; structure above is final. -->
+<!-- Reviewed at QA (Task 16): Structure revised July 2026: localities consolidated to Dadar, Worli Sea Face, Mahalaxmi and Tardeo under /localities/, with /collection/ as the hub. Older locality pages (Bandra, Juhu, Versova, Prabhadevi, Marine Drive) redirect to /collection/. -->
