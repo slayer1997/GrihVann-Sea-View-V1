@@ -7,12 +7,14 @@
    (dark theme + GSAP/canvas hero) and does NOT use this file.
    ============================================================ */
 :root{
-  --ink:#211E1A; --cream:#FAF7F1; --sand:#DED8CC; --linen:#F1EBDF;
-  --brass:#9A7B3F; --gold:#BE9E5E; --muted:#55504A;
-  --line:rgba(33,30,26,0.12);
+  /* B5 light retheme: shared palette with index.html */
+  --ink:#1D2B33; --paper:#FBF9F4; --cream:#FAF7F1; --sand:#DED8CC; --linen:#F1EBDF;
+  --brass:#9A7B3F; --gold:#BE9E5E; --sea:#3E6474; --muted:#55504A;
+  --line:rgba(29,43,51,0.12);
   --serif:'EB Garamond', Georgia, serif;
   --display:'Cormorant Garamond', Georgia, serif;
   --monof:'IBM Plex Mono', ui-monospace, monospace;
+  --sans:'Manrope', -apple-system, sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}

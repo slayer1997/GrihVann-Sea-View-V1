@@ -33,15 +33,17 @@
 
 /* ============ DESIGN TOKENS ============ */
 :root {
-  --ink:        oklch(13% 0.02 250);      /* near-black indigo */
-  --ink-2:      oklch(17% 0.025 252);
-  --abyss:      oklch(10% 0.015 250);
-  --foam:       oklch(94% 0.008 90);      /* warm off-white */
-  --foam-dim:   oklch(94% 0.008 90 / .55);
-  --gold:       oklch(78% 0.11 85);       /* champagne gold */
-  --gold-deep:  oklch(65% 0.12 75);
-  --sea:        oklch(55% 0.09 220);
-  --hairline:   oklch(94% 0.008 90 / .12);
+  /* Light retheme (B5): paper/ink/brass/sea palette, shared with assets/site.css */
+  --paper:      #FBF9F4;                  /* main background */
+  --ink:        #FBF9F4;                  /* legacy name, now = paper (background token) */
+  --ink-2:      #F1EBDF;                  /* secondary panel background, one shade off paper */
+  --abyss:      #1D2B33;                  /* legacy name, now = dark ink (contrast text/panels) */
+  --foam:       #1D2B33;                  /* legacy name, now = ink (main text on paper) */
+  --foam-dim:   rgba(29, 43, 51, .62);    /* dimmed ink for secondary text */
+  --gold:       #9A7B3F;                  /* legacy name, now = brass accent */
+  --gold-deep:  #7C6132;                  /* deeper brass for hover/emphasis */
+  --sea:        #3E6474;                  /* sea accent */
+  --hairline:   rgba(29, 43, 51, .12);    /* dividers on paper */
   --font-serif: "Fraunces", Georgia, serif;
   --font-sans:  "Manrope", -apple-system, sans-serif;
   --ease-lux:   linear(0, 0.0039 0.62%, 0.0156 1.27%, 0.0625 2.65%, 0.2461 5.68%, 0.5 9.09%, 0.7539 12.5%, 0.9375 15.53%, 0.9844 16.91%, 0.9961 17.56%, 1);
@@ -98,7 +100,7 @@ nav {
   animation-range: 0 480px;
 }
 @keyframes nav-solidify {
-  to { background: oklch(13% 0.02 250 / .72); backdrop-filter: blur(18px); padding-block: 1rem; }
+  to { background: rgba(251,249,244,.86); backdrop-filter: blur(18px); padding-block: 1rem; }
 }
 .brand {
   font-family: var(--font-serif); font-size: 1.45rem; font-weight: 400;
@@ -122,19 +124,14 @@ nav {
 
 /* ============ HERO ============ */
 .hero { position: relative; height: 100svh; min-height: 640px; overflow: clip; }
-#sea {
-  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
-  animation: sea-sink linear both;
-  animation-timeline: view();
-  animation-range: exit 0% exit 100%;
+#hero-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover;
 }
-@keyframes sea-sink { to { transform: translateY(18%) scale(1.06); filter: brightness(.45); } }
-
 .hero-veil {
+  /* ivory scrim: keeps dark hero text legible over the photo */
   position: absolute; inset: 0; pointer-events: none;
   background:
-    radial-gradient(120% 90% at 50% 110%, oklch(13% 0.02 250 / .85), transparent 55%),
-    linear-gradient(oklch(13% 0.02 250 / .5), transparent 30%);
+    linear-gradient(to top, rgba(251,249,244,.94) 0%, rgba(251,249,244,.62) 38%, rgba(251,249,244,.12) 68%, transparent 100%);
 }
 .hero-content {
   position: absolute; inset: 0; display: grid; place-content: end start;
@@ -256,7 +253,7 @@ h2 em { font-style: italic; color: var(--gold); }
 .card:hover::before { opacity: 1; }
 .card.is-featured {
   background:
-    linear-gradient(oklch(19% 0.035 250), oklch(15% 0.03 255)) padding-box,
+    linear-gradient(var(--paper), var(--ink-2)) padding-box,
     conic-gradient(from var(--grad-angle), var(--gold-deep), var(--gold), var(--gold-deep)) border-box;
 }
 .card-tier { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
@@ -298,7 +295,7 @@ h2 em { font-style: italic; color: var(--gold); }
   font-size: clamp(2.6rem, 6vw, 4.6rem); color: var(--gold); display: block;
 }
 .stat b sup { font-size: .45em; }
-.stat > span { font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: var(--foam-dim); }
+.stat > span { font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; color: rgba(251,249,244,.68); }
 .stat b span { font: inherit; color: inherit; letter-spacing: inherit; }
 
 /* ============ GALLERY — sticky horizontal scroll, CSS-driven ============ */
@@ -327,9 +324,9 @@ h2 em { font-style: italic; color: var(--gold); }
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(to top, oklch(10% .015 250 / .82), transparent 45%);
 }
-.panel figcaption { position: relative; z-index: 1; }
+.panel figcaption { position: relative; z-index: 1; color: #FBF9F4; }
 .panel figcaption b { font-family: var(--font-serif); font-weight: 400; font-size: 1.5rem; display: block; }
-.panel figcaption span { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--foam-dim); }
+.panel figcaption span { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(251,249,244,.72); }
 @supports not (animation-timeline: view()) {
   .gallery-wrap { height: auto; }
   .gallery-sticky { position: static; height: auto; }
@@ -349,26 +346,43 @@ h2 em { font-style: italic; color: var(--gold); }
 }
 
 /* ============ DUSK / LOCATION ============ */
-.dusk { background: linear-gradient(oklch(13% .02 250), oklch(16% .04 285), oklch(13% .02 250)); }
-.dusk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: clamp(2rem, 6vw, 6rem); align-items: center; max-width: 1300px; margin-inline: auto; }
-.loc-list { list-style: none; margin-top: 2.4rem; display: grid; }
+.dusk { background: linear-gradient(var(--ink-2), var(--paper), var(--ink-2)); }
+.dusk-grid { max-width: 1300px; margin-inline: auto; }
+.loc-list {
+  list-style: none; margin-top: 2.4rem; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px;
+  background: var(--hairline); border: 1px solid var(--hairline);
+}
 .loc-list li {
+  background: var(--paper);
   display: flex; justify-content: space-between; align-items: baseline; gap: 2rem;
-  padding-block: 1.1rem; border-bottom: 1px solid var(--hairline);
+  padding: 1.1rem 1.4rem;
   font-size: .95rem;
 }
-.loc-list li:first-child { border-top: 1px solid var(--hairline); }
+/* uniform grid: no first-child border override needed */
 .loc-list b { font-weight: 500; color: var(--foam); }
 .loc-list span { color: var(--foam-dim); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.compass { width: 100%; max-width: 460px; margin-inline: auto; display: block; }
-.compass .ring { animation: spin 60s linear infinite; transform-origin: center; }
-@keyframes spin { to { rotate: 360deg; } }
+
+/* ============ REPORTS ============ */
+.reports { padding: clamp(4rem, 10vw, 7rem) clamp(1.4rem, 6vw, 5rem); max-width: 1300px; margin-inline: auto; }
+.reports-head { max-width: 60ch; margin-bottom: 2.4rem; }
+.reports-head p:last-child { color: var(--foam-dim); margin-top: 1rem; }
+.reports-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 1.6rem; }
+.report-card {
+  display: block; padding: 1.8rem; border: 1px solid var(--hairline); border-radius: 16px;
+  background: var(--paper); transition: border-color .3s, transform .3s;
+}
+.report-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.report-card h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.3rem; margin-bottom: .6rem; }
+.report-card p { color: var(--foam-dim); font-size: .92rem; margin-bottom: 1.2rem; }
+.report-cta { color: var(--gold); font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; }
 
 /* ============ CTA / FORM ============ */
 .cta { text-align: center; }
 .cta-panel {
   max-width: 640px; margin: 3rem auto 0;
-  background: oklch(17% .025 252 / .6); backdrop-filter: blur(20px);
+  background: rgba(255,255,255,.7); backdrop-filter: blur(20px);
+  box-shadow: 0 8px 40px rgba(29,43,51,.08);
   border: 1px solid var(--hairline); border-radius: 24px;
   padding: clamp(1.8rem, 5vw, 3rem); text-align: left;
 }
@@ -400,6 +414,7 @@ footer {
   color: var(--foam-dim); font-size: .82rem;
 }
 footer .brand { font-size: 1.2rem; }
+.footer-wordmark { letter-spacing: .3em; font-weight: 600; text-transform: uppercase; }
 footer a { color: inherit; text-decoration: none; }
 footer a:hover { color: var(--gold); }
 
@@ -457,7 +472,8 @@ body::after {
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
-  <canvas id="sea" aria-label="Live rendering of the Arabian Sea at dusk"></canvas>
+  <!-- TODO(owner): swap for a real hero photograph of the Mumbai coastline; hero-2908.webp is currently a shared placeholder. -->
+  <img id="hero-img" src="/assets/hero-2908.webp" alt="The open Arabian Sea and Mumbai coastline at dusk" fetchpriority="high" width="2908" height="1624">
   <div class="hero-veil"></div>
   <div class="hero-content">
     <p class="hero-kicker">South &amp; Central Mumbai · New Launches</p>
@@ -483,7 +499,6 @@ body::after {
 </section>
 
 <!-- ================= RESIDENCES ================= -->
-<span id="prices"></span>
 <section id="collection">
   <div class="residences-head">
     <div>
@@ -577,7 +592,7 @@ body::after {
 </section>
 
 <!-- ================= STATS ================= -->
-<section class="stats" id="stats">
+<section class="stats" id="prices">
   <div class="stat reveal"><b><sup>₹</sup><span data-count="4200">4,200</span><sup> Cr</sup></b><span>Transacted, fee-transparent</span></div>
   <div class="stat reveal"><b><span data-count="100">100</span><sup>%</sup></b><span>Prices published publicly</span></div>
   <div class="stat reveal"><b><span data-count="9">9</span></b><span>Years on the coastline</span></div>
@@ -636,17 +651,27 @@ body::after {
         <li><a href="/versova/"><b>Versova &amp; Madh</b></a><span>Onboarding</span></li>
       </ul>
     </div>
-    <svg class="compass reveal" viewBox="0 0 400 400" aria-hidden="true">
-      <g class="ring" stroke="#c9a05a" fill="none" opacity=".55">
-        <circle cx="200" cy="200" r="188" stroke-width="1"/>
-        <circle cx="200" cy="200" r="150" stroke-width=".5" stroke-dasharray="2 6"/>
-        <path d="M200 12 v20 M200 368 v20 M12 200 h20 M368 200 h20" stroke-width="1.5"/>
-      </g>
-      <circle cx="200" cy="200" r="90" fill="none" stroke="#c9a05a" stroke-width="1" opacity=".8"/>
-      <path d="M200 120 L216 200 L200 280 L184 200 Z" fill="#c9a05a"/>
-      <text x="200" y="86" text-anchor="middle" fill="#e8dcc3" font-size="15" letter-spacing="4" font-family="Georgia">SEA · W</text>
-      <text x="200" y="330" text-anchor="middle" fill="#8d99a8" font-size="12" letter-spacing="3" font-family="Georgia">19.02° N · 72.81° E</text>
-    </svg>
+  </div>
+</section>
+
+<!-- ================= REPORTS ================= -->
+<section class="reports" id="reports-teaser">
+  <div class="reports-head">
+    <p class="section-kicker reveal">Verified Data</p>
+    <h2 class="reveal">Read the reports, <em>not just the listings</em></h2>
+    <p class="reveal">Structured pricing frameworks, built to be filled in with verified transacted data as it becomes available &mdash; not scraped estimates dressed up as fact.</p>
+  </div>
+  <div class="reports-grid reveal">
+    <a class="report-card" href="/reports/worli-sea-face-price-report/">
+      <h3>Worli Sea Face Price Report 2026</h3>
+      <p>Indicative &#8377;/sq.ft, floor-band premiums, BHK ticket sizes and a locality comparison for Worli Sea Face.</p>
+      <span class="report-cta">Read the report &rarr;</span>
+    </a>
+    <a class="report-card" href="/reports/sea-view-premium-index/">
+      <h3>The Sea-View Premium Index</h3>
+      <p>What a 180&#176; open sea arc is worth over a 90&#176; partial view &mdash; a framework built to be verified with transacted data.</p>
+      <span class="report-cta">Read the report &rarr;</span>
+    </a>
   </div>
 </section>
 
@@ -664,7 +689,7 @@ body::after {
 </section>
 
 <footer>
-  <a class="brand" href="/">Grih<em>Vann</em></a>
+  <a class="brand footer-wordmark" href="/">G R I H V A N N</a>
   <span><a href="/#collection">Collection</a> · <a href="/#location">Coastline</a> · <a href="/reports/">Reports</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="tel:+919289840824">+91 92898 40824</a> · <a href="https://wa.me/919289840824" rel="nofollow">WhatsApp</a></span>
   <span class="locrow"><a href="/dadar/">sea facing flats in Dadar</a> · <a href="/worli-sea-face-flats/">Worli Sea Face flat prices</a> · <a href="/prabhadevi/">Prabhadevi</a> · <a href="/mahalaxmi/">Mahalaxmi</a> · <a href="/marine-drive/">Marine Drive</a> · <a href="/bandra/">Bandra</a> · <a href="/juhu/">Juhu</a> · <a href="/versova/">Versova</a></span>
   <span class="locrow"><a href="/reports/worli-sea-face-price-report/">Worli Sea Face Price Report</a> · <a href="/reports/sea-view-premium-index/">Sea-View Premium Index</a></span>
@@ -672,180 +697,6 @@ body::after {
 </footer>
 
 <script>
-/* ==================================================================
-   WEBGL OCEAN — live raymarched sea at dusk, fragment-shader only
-   ================================================================== */
-(() => {
-  const canvas = document.getElementById('sea');
-  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'high-performance' });
-  if (!gl) { canvas.style.background = 'linear-gradient(#1a2b45,#0a1524)'; return; }
-
-  const vs = `attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }`;
-  const fs = `
-precision highp float;
-uniform vec2  u_res;
-uniform float u_time;
-uniform vec2  u_mouse;   // -1..1 parallax
-uniform float u_scroll;  // 0..1 hero exit
-
-float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453123); }
-float noise(vec2 p){
-  vec2 i = floor(p), f = fract(p);
-  f = f*f*(3.0-2.0*f);
-  return mix(mix(hash(i), hash(i+vec2(1.,0.)), f.x),
-             mix(hash(i+vec2(0.,1.)), hash(i+vec2(1.,1.)), f.x), f.y);
-}
-float fbm(vec2 p){
-  float a = 0.5, r = 0.0;
-  mat2 m = mat2(1.6,1.2,-1.2,1.6);
-  for(int i=0;i<5;i++){ r += a*noise(p); p = m*p + u_time*0.02; a *= 0.5; }
-  return r;
-}
-float seaH(vec2 p){
-  float t = u_time;
-  float h = 0.0;
-  h += 0.34 * fbm(p*0.55 + vec2(t*0.28, t*0.11));
-  h += 0.10 * fbm(p*2.10 + vec2(-t*0.55, t*0.34));
-  h += 0.03 * noise(p*7.0 + vec2(t*1.4, -t*0.9));
-  return h;
-}
-vec3 seaNormal(vec2 p, float eps){
-  float h  = seaH(p);
-  float hx = seaH(p + vec2(eps, 0.));
-  float hz = seaH(p + vec2(0., eps));
-  return normalize(vec3(h-hx, eps*2.2, h-hz));
-}
-vec3 skyColor(vec3 rd, vec3 sunDir){
-  float horizon = pow(1.0 - clamp(rd.y, 0.0, 1.0), 3.0);
-  vec3 zenith  = vec3(0.045, 0.07, 0.14);
-  vec3 dusk    = vec3(0.38, 0.22, 0.16);
-  vec3 sky = mix(zenith, dusk, horizon*0.9);
-  float sunAmt = clamp(dot(rd, sunDir), 0.0, 1.0);
-  sky += vec3(1.0, 0.68, 0.32) * pow(sunAmt, 220.0) * 2.2;   // disc
-  sky += vec3(0.95, 0.60, 0.25) * pow(sunAmt, 14.0) * 0.55;  // glow
-  sky += vec3(0.85, 0.45, 0.20) * pow(sunAmt, 3.5) * 0.22 * horizon; // haze
-  // stars
-  float st = pow(noise(rd.xy*180.0 + 40.0), 22.0) * smoothstep(0.12, 0.5, rd.y);
-  sky += vec3(st)*0.6;
-  return sky;
-}
-void main(){
-  vec2 uv = (gl_FragCoord.xy*2.0 - u_res) / u_res.y;
-  float t = u_time;
-
-  // camera
-  vec3 ro = vec3(0.0, 1.7 + sin(t*0.5)*0.03 + u_scroll*3.0, t*0.6);
-  float yaw   = u_mouse.x*0.08;
-  float pitch = -0.06 + u_mouse.y*0.04 - u_scroll*0.25;
-  vec3 fwd = normalize(vec3(sin(yaw), pitch, cos(yaw)));
-  vec3 rgt = normalize(cross(fwd, vec3(0.,1.,0.)));
-  vec3 up  = cross(rgt, fwd);
-  vec3 rd  = normalize(fwd + uv.x*rgt*0.9 + uv.y*up*0.9);
-
-  vec3 sunDir = normalize(vec3(0.18, 0.055, 1.0));
-  vec3 col;
-
-  if(rd.y > 0.0){
-    col = skyColor(rd, sunDir);
-  } else {
-    // ray-plane to sea, refine with heightfield
-    float dist = -ro.y / rd.y;
-    vec3 p = ro + rd*dist;
-    for(int i=0;i<4;i++){
-      float h = seaH(p.xz)*0.9;
-      dist = (h - ro.y) / rd.y;
-      p = ro + rd*dist;
-    }
-    float fog = exp(-max(dist-2.0, 0.0)*0.028);
-    vec3 n = seaNormal(p.xz, mix(0.06, 0.55, 1.0-fog));
-
-    vec3 deep    = vec3(0.015, 0.055, 0.09);
-    vec3 shallow = vec3(0.04, 0.13, 0.16);
-    float f = pow(1.0 - max(dot(-rd, n), 0.0), 5.0);      // fresnel
-    f = mix(0.06, 1.0, f);
-
-    vec3 refl = skyColor(reflect(rd, n), sunDir);
-    vec3 water = mix(deep, shallow, smoothstep(0.0, 0.6, seaH(p.xz)));
-    col = mix(water, refl, f);
-
-    // sun glitter path
-    vec3 hlf = normalize(sunDir - rd);
-    float spec = pow(max(dot(n, hlf), 0.0), 240.0);
-    float sparkle = smoothstep(0.55, 1.0, noise(p.xz*14.0 + t*2.0));
-    col += vec3(1.0, 0.72, 0.38) * spec * (2.4 + sparkle*6.0);
-
-    // foam crests
-    float crest = smoothstep(0.62, 0.78, seaH(p.xz)) * smoothstep(0.0, 0.35, fog);
-    col += vec3(0.35, 0.42, 0.46) * crest * 0.25;
-
-    // aerial perspective
-    vec3 horizonCol = skyColor(vec3(rd.x, 0.0, rd.z), sunDir);
-    col = mix(horizonCol, col, fog);
-  }
-
-  // moon-gold vignette + filmic-ish tonemap
-  col = col / (col + 0.55);
-  col = pow(col, vec3(0.92));
-  float vig = 1.0 - 0.35*dot(uv*0.55, uv*0.55);
-  col *= vig;
-
-  gl_FragColor = vec4(col, 1.0);
-}`;
-
-  function compile(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src); gl.compileShader(s);
-    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s));
-    return s;
-  }
-  const prog = gl.createProgram();
-  gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
-  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(prog); gl.useProgram(prog);
-
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(prog, 'p');
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-  const uRes = gl.getUniformLocation(prog, 'u_res');
-  const uTime = gl.getUniformLocation(prog, 'u_time');
-  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
-  const uScroll = gl.getUniformLocation(prog, 'u_scroll');
-
-  const SCALE = Math.min(window.devicePixelRatio, 1.6) * 0.72; // perf: sub-native res
-  function resize() {
-    canvas.width = Math.round(canvas.clientWidth * SCALE);
-    canvas.height = Math.round(canvas.clientHeight * SCALE);
-    gl.viewport(0, 0, canvas.width, canvas.height);
-  }
-  resize();
-  addEventListener('resize', resize);
-
-  let mx = 0, my = 0, tmx = 0, tmy = 0;
-  addEventListener('pointermove', e => {
-    tmx = (e.clientX / innerWidth) * 2 - 1;
-    tmy = (e.clientY / innerHeight) * 2 - 1;
-  }, { passive: true });
-
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let visible = true;
-  new IntersectionObserver(([e]) => visible = e.isIntersecting).observe(canvas);
-
-  const t0 = performance.now();
-  (function frame(now) {
-    requestAnimationFrame(frame);
-    if (!visible) return;
-    mx += (tmx - mx) * 0.04; my += (tmy - my) * 0.04;
-    const sc = Math.min(scrollY / innerHeight, 1);
-    gl.uniform2f(uRes, canvas.width, canvas.height);
-    gl.uniform1f(uTime, reduced ? 12 : (now - t0) / 1000);
-    gl.uniform2f(uMouse, mx, my);
-    gl.uniform1f(uScroll, sc * 0.6);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-  })(t0);
-})();
 
 /* ============ custom cursor ============ */
 (() => {
