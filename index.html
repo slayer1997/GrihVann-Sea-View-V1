@@ -123,7 +123,41 @@ nav {
   transition: background .3s, color .3s !important;
 }
 .nav-cta:hover { background: var(--gold); color: var(--abyss) !important; }
-@media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+/* ============ BURGER MENU (mobile drawer) ============ */
+.nav-burger {
+  display: none; background: none; border: 0; cursor: none;
+  padding: 10px; margin: -10px -10px -10px 0;
+  color: var(--foam); flex-direction: column; gap: 5px;
+  position: relative; z-index: 96;
+}
+.nav-burger span {
+  display: block; width: 24px; height: 2px; background: currentColor;
+  transition: transform .35s var(--ease-out-expo), opacity .3s;
+  box-shadow: 0 0 8px rgba(251,249,244,.9);
+}
+@media (pointer: coarse) { .nav-burger { cursor: pointer; } }
+@media (max-width: 760px) {
+  .nav-burger { display: flex; }
+  .nav-links {
+    position: fixed; inset: 0 0 auto 0; z-index: 95;
+    background: rgba(251,249,244,.97); backdrop-filter: blur(18px);
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 5.4rem clamp(1.4rem, 5vw, 4rem) 2rem;
+    box-shadow: 0 12px 40px rgba(29,43,51,.14);
+    transform: translateY(-102%);
+    transition: transform .45s var(--ease-out-expo);
+  }
+  nav.menu-open .nav-links { transform: none; }
+  .nav-links a:not(.nav-cta) {
+    display: block; padding: 1rem .2rem; font-size: .95rem;
+    border-bottom: 1px solid var(--hairline); text-shadow: none;
+  }
+  .nav-links a.nav-cta { margin-top: 1.2rem; align-self: flex-start; }
+  nav.menu-open .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.menu-open .nav-burger span:nth-child(2) { opacity: 0; }
+  nav.menu-open .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
 
 /* ============ HERO ============ */
 .hero { position: relative; height: 100svh; min-height: 640px; overflow: clip; }
@@ -489,13 +523,14 @@ body::after {
 
 <nav>
   <a class="brand" href="/">Grih<em>Vann</em></a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links-home">
     <a href="#collection">Collection</a>
     <a href="#location">Coastline</a>
     <a href="/reports/">Reports</a>
     <a href="/about/">About</a>
     <a class="nav-cta" href="#enquire">Enquire</a>
   </div>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links-home"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- ================= HERO ================= -->
@@ -741,6 +776,22 @@ body::after {
     el.addEventListener('pointerenter', () => c.classList.add('is-hover'));
     el.addEventListener('pointerleave', () => c.classList.remove('is-hover'));
   });
+})();
+
+/* ============ burger menu (mobile drawer) ============ */
+(() => {
+  const burger = document.querySelector('.nav-burger');
+  const nav = document.querySelector('nav');
+  if (!burger || !nav) return;
+  const setMenu = open => {
+    nav.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger.addEventListener('click', () => setMenu(!nav.classList.contains('menu-open')));
+  nav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 })();
 
 /* ============ manifesto: wrap words for scroll-driven reveal ============ */

@@ -8,6 +8,26 @@
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    /* burger menu (mobile drawer) */
+    var burger = nav.querySelector(".nav-burger");
+    if (burger) {
+      var setMenu = function (open) {
+        nav.classList.toggle("menu-open", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        document.body.style.overflow = open ? "hidden" : "";
+      };
+      burger.addEventListener("click", function () {
+        setMenu(!nav.classList.contains("menu-open"));
+      });
+      nav.querySelectorAll("#nav-links a").forEach(function (a) {
+        a.addEventListener("click", function () { setMenu(false); });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") setMenu(false);
+      });
+    }
   }
   var els = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && els.length) {

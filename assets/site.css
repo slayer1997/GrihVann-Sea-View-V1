@@ -126,9 +126,32 @@ nav a.nav-cta:hover{background:var(--gold);color:var(--ink)}
   .facts{grid-template-columns:1fr 1fr}
   .two-col,.loc-grid{grid-template-columns:1fr}
   nav{padding:16px 24px}
-  nav a.navlink{display:none}
   .footer-inner{flex-direction:column;align-items:flex-start}
   .cols-4 .table-head,.cols-4 .table-row{grid-template-columns:1.2fr 1fr 1fr;font-size:16px}
+}
+
+/* ============ BURGER MENU (mobile nav drawer) ============ */
+/* #nav must sit above .crumb, which legacy CSS also makes position:fixed (z-index:50) */
+nav#nav{z-index:60}
+.nav-burger{display:none;background:none;border:0;cursor:pointer;padding:10px;margin:-10px -10px -10px 0;color:inherit;flex-direction:column;gap:5px;position:relative;z-index:60}
+.nav-burger span{display:block;width:24px;height:2px;background:currentColor;transition:transform .3s ease,opacity .3s ease}
+@media (max-width:900px){
+  .nav-burger{display:flex}
+  nav #nav-links{
+    position:fixed;top:0;left:0;right:0;z-index:55;
+    background:var(--cream);color:var(--ink);
+    display:flex;flex-direction:column;align-items:stretch;
+    padding:84px 28px 28px;box-shadow:0 12px 40px rgba(20,17,12,.22);
+    transform:translateY(-102%);transition:transform .38s cubic-bezier(.16,1,.3,1);
+  }
+  nav.menu-open{color:var(--ink)}
+  nav.menu-open #nav-links{transform:none}
+  nav #nav-links a.navlink{margin:0;padding:15px 2px;font-size:14px;letter-spacing:.16em;border-bottom:1px solid var(--line);opacity:1}
+  nav #nav-links a.navlink:hover{border-bottom:1px solid var(--gold)}
+  nav #nav-links a.nav-cta{margin:20px 0 0;align-self:flex-start}
+  nav.menu-open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.menu-open .nav-burger span:nth-child(2){opacity:0}
+  nav.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
 
 /* ============ FORM (contact/enquiry, shared inner-page style) ============ */
