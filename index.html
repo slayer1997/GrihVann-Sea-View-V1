@@ -179,16 +179,11 @@ nav {
 }
 
 /* ============ HERO ============ */
-.hero { position: relative; height: 100svh; min-height: 640px; overflow: clip; }
-#hero-img {
-  position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover;
-}
+.hero { position: relative; height: 100svh; min-height: 640px; overflow: clip; background: var(--abyss); }
 .hero-canvas {
-  /* live WebGL sea — fades in over the fallback photo once rendering */
+  /* live WebGL sea — the only hero visual now, shown immediately */
   position: absolute; inset: 0; width: 100%; height: 100%; display: block;
-  opacity: 0; transition: opacity 1.4s ease;
 }
-.hero-canvas.is-live { opacity: 1; }
 .live-tag {
   position: absolute; top: clamp(4.6rem, 11vh, 6.4rem); right: clamp(1.6rem, 5vw, 4rem);
   display: none; align-items: center; gap: .55rem;
@@ -548,7 +543,6 @@ body::after {
     <a class="nav-sub" href="/worli-sea-face-flats/">Worli Sea Face</a>
     <a class="nav-sub" href="/mahalaxmi/">Mahalaxmi</a>
     <a class="nav-sub" href="/tardeo/">Tardeo</a>
-    <a href="#location">Coastline</a>
     <a href="/reports/">Reports</a>
     <a href="/about/">About</a>
     <a class="nav-cta" href="#enquire">Enquire</a>
@@ -558,15 +552,13 @@ body::after {
 
 <!-- ================= HERO ================= -->
 <header class="hero" id="top">
-  <!-- Static photo is the fallback & LCP image; the live WebGL sea (assets/webgl/sea-webgl.js)
-       fades in over it once WebGL2 is running. TODO(owner): still swap for a real coastline photograph. -->
-  <img id="hero-img" src="/assets/hero-2908.webp" alt="The open Arabian Sea and Mumbai coastline at dusk" fetchpriority="high" width="2908" height="1624">
+  <!-- Live WebGL sea (assets/webgl/sea-webgl.js) is the only hero visual; no static fallback photo. -->
   <canvas class="hero-canvas" id="hero-sea" aria-hidden="true"></canvas>
   <span class="live-tag" aria-hidden="true">Live render · WebGL2</span>
   <div class="hero-content">
     <p class="hero-kicker">South &amp; Central Mumbai · New Launches</p>
-    <h1>Sea facing flats in Mumbai — <em>the horizon, from your living room</em></h1>
-    <p class="hero-sub">Curated sea facing flats and apartments for sale across Mumbai's coastline — every price published up front.</p>
+    <h1>Sea facing flats — <em>the horizon, from your living room</em></h1>
+    <p class="hero-sub">Every price published up front, across Mumbai's coastline.</p>
   </div>
   <span class="scroll-hint">Scroll</span>
 </header>
