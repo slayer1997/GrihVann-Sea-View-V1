@@ -290,9 +290,21 @@ void main(){
   /* ---- whole page: subtle rippling sand texture behind plain-paper sections ---- */
   /* TEMP DIAGNOSTIC -- remove once sand-ripple render bug is found */
   try {
-    console.log('[sand-diag] before mount, canvas =', document.getElementById('page-sand'));
-    mountShaderCanvas(document.getElementById('page-sand'), SAND_FRAG, 0.35);
-    console.log('[sand-diag] mount call returned normally');
+    const _c = document.getElementById('page-sand');
+    console.log('[sand-diag] prerendering=' + document.prerendering + ' visibilityState=' + document.visibilityState
+      + ' clientW=' + (_c && _c.clientWidth) + ' clientH=' + (_c && _c.clientHeight)
+      + ' dpr=' + window.devicePixelRatio + ' t=' + performance.now());
+    mountShaderCanvas(_c, SAND_FRAG, 0.35);
+    console.log('[sand-diag] after mount call, canvas.width=' + _c.width + ' canvas.height=' + _c.height + ' t=' + performance.now());
+    setTimeout(() => {
+      console.log('[sand-diag] +500ms check, canvas.width=' + _c.width + ' canvas.height=' + _c.height
+        + ' prerendering=' + document.prerendering + ' visibilityState=' + document.visibilityState);
+    }, 500);
+    if ('onprerenderingchange' in document) {
+      document.addEventListener('prerenderingchange', () => {
+        console.log('[sand-diag] prerenderingchange fired! now prerendering=' + document.prerendering + ' canvas.width=' + _c.width);
+      }, { once: true });
+    }
   } catch (err) {
     console.error('[sand-diag] EXCEPTION during mount:', err && err.message, err && err.stack);
   }
