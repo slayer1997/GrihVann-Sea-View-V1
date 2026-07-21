@@ -94,10 +94,12 @@ nav{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-con
 
 /* ---------- collection cards ---------- */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
-.card{position:relative;border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--linen);transition:transform .3s,box-shadow .3s}
+.card{position:relative;border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--linen);transition:transform .3s,box-shadow .3s;overflow:hidden}
 .card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(29,43,51,.1)}
 .card.is-featured{background:var(--paper);border:1px solid var(--brass);box-shadow:0 10px 34px rgba(154,123,63,.14)}
-.card-tag{position:absolute;top:-11px;left:24px;background:var(--brass);color:var(--paper);font-family:var(--monof);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:99px}
+.card-img{position:relative;margin:-28px -28px 20px;height:200px;overflow:hidden}
+.card-img img{display:block;width:100%;height:100%;min-height:0;object-fit:cover}
+.card-tag{position:absolute;top:14px;left:14px;background:var(--brass);color:var(--paper);font-family:var(--monof);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:99px;z-index:2}
 .card-tier{font-family:var(--monof);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
 .card h3{margin-bottom:6px}
 .card .cv{font-family:var(--display);font-style:italic;color:var(--muted);margin-bottom:16px}
@@ -105,7 +107,8 @@ nav{position:sticky;top:0;z-index:90;display:flex;align-items:center;justify-con
 .card li::before{content:"— "}
 .card-price{font-family:var(--display);font-size:24px;margin-bottom:16px}
 .card-price small{display:block;font-family:var(--monof);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.card-cta{font-family:var(--monof);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.card-cta{display:inline-flex;font-family:var(--monof);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.card-cta:hover{text-decoration:underline}
 @media (max-width:820px){.cards{grid-template-columns:1fr}}
 
 /* ---------- pricing table ---------- */
@@ -246,21 +249,27 @@ footer .fl a{margin:0 8px}
 
   <div class="cards">
     <article class="card is-featured">
-      <span class="card-tag">Live now</span>
+      <div class="card-img">
+        <span class="card-tag">Live now</span>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Sea-facing living room, [Project Name]">
+      </div>
       <p class="card-tier">New launch · Central Mumbai</p>
       <h3>[Project Name]</h3>
       <p class="cv">Sea-view 3 BHK · two residences per floor</p>
       <ul><li>1,077 &amp; 1,442 sq.ft carpet, all sea-facing</li><li>Private deck &amp; lift lobby per home</li><li>12 ft ceilings · infinity pool</li></ul>
       <p class="card-price">₹5.19 Cr <small>onwards · published rate card</small></p>
-      <span class="card-cta">View residence →</span>
+      <a class="card-cta" href="#">View residence →</a>
     </article>
     <article class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop" alt="[Project Name] towers at dusk">
+      </div>
       <p class="card-tier">New launch · Central Mumbai</p>
       <h3>[Project Name]</h3>
       <p class="cv">3–5 BHK · three towers</p>
       <ul><li>1,283–2,994 sq.ft carpet, 46–67 floors</li><li>Eastern &amp; western coast views</li><li>MahaRERA registered</li></ul>
       <p class="card-price">Rate card on enquiry <small>published the day we receive it</small></p>
-      <span class="card-cta">View residence →</span>
+      <a class="card-cta" href="#">View residence →</a>
     </article>
   </div>
 </section>
