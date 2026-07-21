@@ -271,6 +271,13 @@ void main(){
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       if (!announced) { announced = true; if (onLive) onLive(); }
     };
+    canvas.getBoundingClientRect(); // force a layout flush before the first resize() --
+    // page-sand is the very first element in <body> (position:fixed, full-viewport),
+    // so nothing earlier on the page has triggered layout yet; without this, its
+    // first clientWidth/clientHeight read can land before layout has settled, and
+    // resize() only re-runs when canvas.width/height differ from a *new* computed
+    // size, so a bad first read never self-corrects. hero-sea/stats-sea don't hit
+    // this because they sit inside already-laid-out sections.
     frame();
     window.addEventListener('pointermove', onMove, { passive: true });
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -288,24 +295,5 @@ void main(){
   mountShaderCanvas(document.getElementById('stats-sea'), CAUSTICS_FRAG, 0.4);
 
   /* ---- whole page: subtle rippling sand texture behind plain-paper sections ---- */
-  /* TEMP DIAGNOSTIC -- remove once sand-ripple render bug is found */
-  try {
-    const _c = document.getElementById('page-sand');
-    console.log('[sand-diag] prerendering=' + document.prerendering + ' visibilityState=' + document.visibilityState
-      + ' clientW=' + (_c && _c.clientWidth) + ' clientH=' + (_c && _c.clientHeight)
-      + ' dpr=' + window.devicePixelRatio + ' t=' + performance.now());
-    mountShaderCanvas(_c, SAND_FRAG, 0.35);
-    console.log('[sand-diag] after mount call, canvas.width=' + _c.width + ' canvas.height=' + _c.height + ' t=' + performance.now());
-    setTimeout(() => {
-      console.log('[sand-diag] +500ms check, canvas.width=' + _c.width + ' canvas.height=' + _c.height
-        + ' prerendering=' + document.prerendering + ' visibilityState=' + document.visibilityState);
-    }, 500);
-    if ('onprerenderingchange' in document) {
-      document.addEventListener('prerenderingchange', () => {
-        console.log('[sand-diag] prerenderingchange fired! now prerendering=' + document.prerendering + ' canvas.width=' + _c.width);
-      }, { once: true });
-    }
-  } catch (err) {
-    console.error('[sand-diag] EXCEPTION during mount:', err && err.message, err && err.stack);
-  }
+  mountShaderCanvas(document.getElementById('page-sand'), SAND_FRAG, 0.35);
 })();
