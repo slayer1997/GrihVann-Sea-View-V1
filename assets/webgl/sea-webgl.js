@@ -288,5 +288,12 @@ void main(){
   mountShaderCanvas(document.getElementById('stats-sea'), CAUSTICS_FRAG, 0.4);
 
   /* ---- whole page: subtle rippling sand texture behind plain-paper sections ---- */
-  mountShaderCanvas(document.getElementById('page-sand'), SAND_FRAG, 0.35);
+  /* TEMP DIAGNOSTIC -- remove once sand-ripple render bug is found */
+  try {
+    console.log('[sand-diag] before mount, canvas =', document.getElementById('page-sand'));
+    mountShaderCanvas(document.getElementById('page-sand'), SAND_FRAG, 0.35);
+    console.log('[sand-diag] mount call returned normally');
+  } catch (err) {
+    console.error('[sand-diag] EXCEPTION during mount:', err && err.message, err && err.stack);
+  }
 })();
