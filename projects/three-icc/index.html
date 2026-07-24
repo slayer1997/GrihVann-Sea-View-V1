@@ -287,7 +287,7 @@ footer.site-footer{border-top:1px solid var(--line);padding:44px clamp(24px,6vw,
   <div class="mb-left"><b>Three ICC</b><span>3&#8211;5 BHK &middot; Island City Center, Dadar</span></div>
   <div style="display:flex;gap:10px;align-items:center">
     <span>Rate card on enquiry</span>
-    <a class="btn btn-brass" href="/#enquire" style="padding:9px 18px">Enquire &rarr;</a>
+    <a class="btn btn-brass" href="#" data-enquire style="padding:9px 18px">Enquire &rarr;</a>
   </div>
 </div>
 
@@ -303,10 +303,10 @@ footer.site-footer{border-top:1px solid var(--line);padding:44px clamp(24px,6vw,
         <a href="/tardeo/">Tardeo</a>
       </span></span>
     </span>
-    <a class="navlink" href="/#location">Coastline</a>
+    <a class="navlink" href="/collection/">Coastline</a>
     <a class="navlink" href="/reports/">Reports</a>
     <a class="navlink" href="/about/">About</a>
-    <a class="btn btn-ghost" href="/#enquire">Enquire</a>
+    <a class="btn btn-ghost" href="#" data-enquire>Enquire</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
 </nav>
@@ -432,7 +432,7 @@ footer.site-footer{border-top:1px solid var(--line);padding:44px clamp(24px,6vw,
   <p class="eyebrow" style="color:#C9B98A">Enquire</p>
   <h2 style="margin-top:14px">See the rate card. Book a viewing.</h2>
   <div class="cta-actions">
-    <a class="btn btn-brass" href="/#enquire">Request details &rarr;</a>
+    <a class="btn btn-brass" href="#" data-enquire>Request details &rarr;</a>
     <a class="btn btn-wa" href="https://wa.me/919289840824?text=Hi%20GrihVann%2C%20I%27d%20like%20the%20Three%20ICC%20rate%20card." rel="nofollow">WhatsApp for the rate card</a>
   </div>
 </section>
@@ -475,6 +475,84 @@ window.addEventListener('scroll', function(){
   miniBar.classList.toggle('is-visible', window.scrollY > hero.offsetHeight - 80);
 });
 
+</script>
+
+<!-- ============ ENQUIRE MODAL (shared component - keep in sync across all templates/pages) ============ -->
+<div class="enquire-overlay" id="enquireOverlay" hidden>
+  <div class="enquire-modal" role="dialog" aria-modal="true" aria-labelledby="enquireModalTitle">
+    <button type="button" class="enquire-close" aria-label="Close">&times;</button>
+    <p class="enquire-eyebrow">Private Viewings &middot; By appointment</p>
+    <h3 id="enquireModalTitle">Book a private viewing</h3>
+    <form class="enquire-form" id="enquiryModalForm" novalidate>
+      <div class="ef-field"><label for="ef-name">Name</label><input id="ef-name" name="name" required autocomplete="name"></div>
+      <div class="ef-field"><label for="ef-email">Email</label><input id="ef-email" name="email" type="email" required autocomplete="email"></div>
+      <div class="ef-field"><label for="ef-phone">Phone</label><input id="ef-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="ef-field"><label for="ef-msg">Which residence calls to you?</label><textarea id="ef-msg" name="message"></textarea></div>
+      <button class="ef-submit" type="submit">Arrange my viewing</button>
+      <p class="ef-alt">Prefer WhatsApp? <a href="https://wa.me/919289840824?text=Hi%20GrihVann%2C%20I%27d%20like%20to%20enquire." rel="nofollow">Message us directly &rarr;</a></p>
+    </form>
+  </div>
+</div>
+<style>
+.enquire-overlay{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(29,43,51,.55);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.enquire-overlay.is-open{opacity:1;pointer-events:auto}
+.enquire-modal{position:relative;background:var(--paper,#FBF9F4);color:var(--ink,#1D2B33);max-width:440px;width:100%;max-height:90vh;overflow-y:auto;padding:clamp(28px,5vw,40px);border-radius:2px;box-shadow:0 30px 80px rgba(0,0,0,.35);transform:translateY(16px);transition:transform .25s ease}
+.enquire-overlay.is-open .enquire-modal{transform:translateY(0)}
+.enquire-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:26px;line-height:1;color:var(--muted,#5B6A72);cursor:pointer}
+.enquire-close:hover{color:var(--ink,#1D2B33)}
+.enquire-eyebrow{font-family:var(--monof,monospace);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass,var(--gold,#9A7B3F));margin-bottom:8px}
+.enquire-modal h3{font-family:var(--display,var(--font-serif,serif));font-weight:500;font-size:clamp(22px,3vw,28px);margin-bottom:20px;line-height:1.15}
+.ef-field{margin-bottom:14px;display:flex;flex-direction:column;gap:6px}
+.ef-field label{font-family:var(--sans,var(--font-sans,sans-serif));font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#5B6A72)}
+.ef-field input,.ef-field textarea{font-family:var(--sans,var(--font-sans,sans-serif));font-size:15px;padding:10px 12px;border:1px solid var(--line,rgba(0,0,0,.12));border-radius:2px;background:#fff;color:var(--ink,#1D2B33)}
+.ef-field textarea{min-height:70px;resize:vertical}
+.ef-submit{width:100%;margin-top:6px;padding:14px;border:none;border-radius:2px;background:var(--brass,var(--gold,#9A7B3F));color:#fff;font-family:var(--sans,var(--font-sans,sans-serif));font-size:13px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.ef-submit:hover{background:var(--brass-deep,var(--gold-deep,#7C6132))}
+.ef-alt{margin-top:14px;text-align:center;font-family:var(--sans,var(--font-sans,sans-serif));font-size:13px;color:var(--muted,#5B6A72)}
+.ef-alt a{color:var(--brass,var(--gold,#9A7B3F))}
+</style>
+<script>
+(function(){
+  var overlay=document.getElementById('enquireOverlay');
+  if(!overlay) return;
+  var modal=overlay.querySelector('.enquire-modal');
+  var lastFocus=null;
+  function openModal(e){
+    if(e) e.preventDefault();
+    lastFocus=document.activeElement;
+    overlay.hidden=false;
+    requestAnimationFrame(function(){ overlay.classList.add('is-open'); });
+    document.body.style.overflow='hidden';
+    var first=modal.querySelector('input,textarea');
+    if(first) first.focus();
+  }
+  function closeModal(){
+    overlay.classList.remove('is-open');
+    document.body.style.overflow='';
+    setTimeout(function(){ overlay.hidden=true; },250);
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-enquire]').forEach(function(el){
+    el.addEventListener('click',openModal);
+  });
+  overlay.addEventListener('click',function(e){ if(e.target===overlay) closeModal(); });
+  overlay.querySelector('.enquire-close').addEventListener('click',closeModal);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && overlay.classList.contains('is-open')) closeModal(); });
+
+  var gclid=new URLSearchParams(location.search).get('gclid');
+  if(gclid) sessionStorage.setItem('gclid',gclid);
+  var form=document.getElementById('enquiryModalForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('button');
+    btn.disabled=true; btn.textContent='Sending…';
+    var data=new FormData(form);
+    data.set('gclid',sessionStorage.getItem('gclid')||'');
+    data.set('page',location.href);
+    fetch('https://script.google.com/macros/s/AKfycbw8Xae1-8TaUREihkODfrz8dYb1JE3zvXNT0Yf-Wb-zBvZgbVyuwVucH0X30uKrsTu7/exec',{method:'POST',mode:'no-cors',body:data});
+    form.innerHTML='<p style="text-align:center;font-family:var(--display,var(--font-serif,serif));font-size:1.3rem">Thank you — we will be in touch within one business day.</p>';
+  });
+})();
 </script>
 </body>
 </html>

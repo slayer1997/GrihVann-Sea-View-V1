@@ -350,8 +350,8 @@ h2 em { font-style: italic; color: var(--gold); }
 .region-name { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.3rem); color: var(--foam); }
 .region-sub { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
 .locality-block { margin-bottom: 2.4rem; }
-.locality-name { font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
-.locality-name a { color: var(--foam-dim); text-transform: none; letter-spacing: .02em; font-size: .85rem; }
+.locality-name { font-family: var(--font-serif); font-size: clamp(2.1rem, 4.2vw, 3.1rem); font-weight: 500; letter-spacing: 0; text-transform: none; line-height: 1.1; color: var(--gold); margin-bottom: 1.4rem; display: flex; gap: 1.2rem; align-items: baseline; flex-wrap: wrap; }
+.locality-name a { font-family: var(--font-sans); color: var(--foam-dim); text-transform: none; letter-spacing: .02em; font-size: .85rem; }
 .locality-name a:hover { color: var(--gold); }
 .loc-links { display: flex; flex-wrap: wrap; gap: .8rem; }
 .loc-links a { border: 1px solid var(--hairline); color: var(--foam); padding: .6rem 1.2rem; border-radius: 99px; font-size: .85rem; letter-spacing: .03em; transition: border-color .3s, color .3s; }
@@ -425,8 +425,6 @@ h2 em { font-style: italic; color: var(--gold); }
 }
 
 /* ============ DUSK / LOCATION ============ */
-.dusk { background: linear-gradient(var(--ink-2), var(--paper), var(--ink-2)); }
-.dusk-grid { max-width: 1300px; margin-inline: auto; }
 .loc-list {
   list-style: none; margin-top: 2.4rem; display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px;
@@ -665,6 +663,81 @@ body::after {
       </div>
     </div>
   </div>
+
+  <!-- SOUTH MUMBAI & EASTERN WATERFRONT -->
+  <div class="region reveal">
+    <div class="region-head"><h3 class="region-name">South Mumbai &amp; Eastern Waterfront</h3><span class="region-sub">Sewri · Byculla · Marine Lines</span></div>
+
+    <div class="locality-block">
+      <p class="locality-name">Sewri</p>
+      <div class="cards">
+    <article class="card is-featured reveal">
+      <div class="card-img"><img src="/assets/hero-1920.webp" alt="Representative sunrise over the Arabian Sea and Mumbai's eastern waterfront, Sewri" loading="lazy"></div>
+      <p class="card-tier">New Launch · Sewri</p>
+      <h3>Lodha Aureus</h3>
+      <p class="card-view">3 &amp; 4 BHK · two Art Deco towers, G+66 floors</p>
+      <ul>
+        <li>354 residences across a 5-acre gated estate</li>
+        <li>Developed by Lodha, with Sahana Group of Companies</li>
+        <li>MahaRERA registered · possession December 2032</li>
+      </ul>
+      <p class="card-price">Rate card on enquiry <small>published the day we receive it</small></p>
+      <a class="card-cta" href="/projects/lodha-aureus/">View residence</a>
+    </article>
+    <article class="card reveal">
+      <div class="card-img"><img src="/assets/hero-2908.webp" alt="Representative sea-facing skyline at dusk, Sewri, Mumbai" loading="lazy"></div>
+      <p class="card-tier">New Launch · Sewri</p>
+      <h3>L&amp;T The Gateway</h3>
+      <p class="card-view">3, 4 &amp; 4.5 BHK · two sea-facing towers by L&amp;T Realty</p>
+      <ul>
+        <li>1,258 – 2,251 sq ft carpet, ~62 floors per tower</li>
+        <li>314 sea-facing residences across 2.17 acres</li>
+        <li>MahaRERA registered · possession December 2029</li>
+      </ul>
+      <p class="card-price">Rate card on enquiry <small>published the day we receive it</small></p>
+      <a class="card-cta" href="/projects/lt-gateway/">View residence</a>
+    </article>
+      </div>
+    </div>
+
+    <div class="locality-block">
+      <p class="locality-name">Byculla</p>
+      <div class="cards">
+    <article class="card reveal">
+      <div class="card-img"><img src="/assets/hero-1920.webp" alt="Representative dusk skyline over Mumbai's eastern harbour, Byculla" loading="lazy"></div>
+      <p class="card-tier">New Launch · Byculla</p>
+      <h3>Monte South</h3>
+      <p class="card-view">2 – 3.5 BHK · Tower 1, on the 12.5-acre former Khatau Mills estate</p>
+      <ul>
+        <li>1,150 – 1,694 sq ft carpet · 39 floors</li>
+        <li>Adani Realty &amp; Marathon Group · designed by Hafeez Contractor</li>
+        <li>MahaRERA registered · beach volleyball court on the 8th-floor podium</li>
+      </ul>
+      <p class="card-price">Rate card on enquiry <small>published the day we receive it</small></p>
+      <a class="card-cta" href="/projects/monte-south/">View residence</a>
+    </article>
+      </div>
+    </div>
+
+    <div class="locality-block">
+      <p class="locality-name">Marine Lines</p>
+      <div class="cards">
+    <article class="card is-featured reveal">
+      <div class="card-img"><img src="/assets/hero-2908.webp" alt="Representative view of Marine Drive's Queen's Necklace and the Arabian Sea at dusk" loading="lazy"></div>
+      <p class="card-tier">Limited Release · Marine Lines</p>
+      <h3>Sheth One Marina</h3>
+      <p class="card-view">The Majesté Collection · 2 – 4 BHK on a 74-storey tower's higher floors</p>
+      <ul>
+        <li>902 – 2,528 sq ft carpet · Arabian Sea &amp; Queen's Necklace views</li>
+        <li>Ashwin Sheth Group &amp; YM Infra</li>
+        <li>MahaRERA registered · possession December 2029</li>
+      </ul>
+      <p class="card-price">₹ 6.99 Cr <small>onwards · published rate card</small></p>
+      <a class="card-cta" href="/projects/sheth-one-marina/">View residence</a>
+    </article>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= STATS ================= -->
@@ -711,24 +784,6 @@ body::after {
   <cite class="reveal">Aditi Rao · Meridian Worli · 38th floor</cite>
 </section>
 
-<!-- ================= LOCATION ================= -->
-<section class="dusk" id="location">
-  <div class="dusk-grid">
-    <div>
-      <p class="section-kicker reveal">The Coastline</p>
-      <h2 class="reveal">From Marine Drive, <em>to Madh Island</em></h2>
-      <ul class="loc-list reveal">
-        <li><a href="/dadar/"><b>Dadar West</b></a><span>02 live projects</span></li>
-        <li><a href="/worli-sea-face-flats/"><b>Worli Sea Face</b></a><span>Onboarding</span></li>
-        <li><a href="/mahalaxmi/"><b>Mahalaxmi</b></a><span>Onboarding</span></li>
-        <li><a href="/tardeo/"><b>Tardeo</b></a><span>Onboarding</span></li>
-        <li><a href="/collection/"><b>Bandra · Juhu · Versova</b></a><span>Returning</span></li>
-        <li><a href="/collection/"><b>Prabhadevi · Marine Drive</b></a><span>Returning</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <!-- ================= REPORTS ================= -->
 <section class="reports" id="reports-teaser">
   <div class="reports-head">
@@ -765,7 +820,7 @@ body::after {
 
 <footer>
   <a class="brand footer-wordmark" href="/">G R I H V A N N</a>
-  <span><a href="#collection">Collection</a> · <a href="#location">Coastline</a> · <a href="/reports/">Reports</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="tel:+919289840824">+91 92898 40824</a> · <a href="https://wa.me/919289840824" rel="nofollow">WhatsApp</a></span>
+  <span><a href="#collection">Collection</a> · <a href="/reports/">Reports</a> · <a href="/about/">About</a> · <a href="/contact/">Contact</a> · <a href="/privacy/">Privacy</a> · <a href="tel:+919289840824">+91 92898 40824</a> · <a href="https://wa.me/919289840824" rel="nofollow">WhatsApp</a></span>
   <span class="locrow"><a href="/dadar/">sea facing flats in Dadar</a> · <a href="/worli-sea-face-flats/">Worli Sea Face flat prices</a> · <a href="/mahalaxmi/">Mahalaxmi</a> · <a href="/tardeo/">Tardeo</a> · <a href="/collection/">The Collection</a></span>
   <span class="locrow"><a href="/reports/worli-sea-face-price-report/">Worli Sea Face Price Report</a> · <a href="/reports/sea-view-premium-index/">Sea-View Premium Index</a></span>
   <span>© 2026 GrihVann · sea-views.com · An independent advisory · MahaRERA Agent Reg. A51900036950. Project RERA details on respective project pages.</span>
